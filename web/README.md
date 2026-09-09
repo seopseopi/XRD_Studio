@@ -121,7 +121,7 @@ XRD_DIGITIZER_PYTHON=/absolute/path/to/xrd_digitizer/.venv/bin/python3
 
 ## 📸 Screenshots
 
-현재 UI의 실제 화면 캡처입니다.
+2026-09-09 현재 앱에서 내장 예제를 읽고 분석한 실제 화면입니다. [업로드 화면과 전체 캡처](../docs/screenshots/README.md)
 
 | Digitizer | Analyzer |
 |:---:|:---:|

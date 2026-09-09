@@ -1,6 +1,6 @@
 <div align="center">
 
-![XRD Digitizer — From chart to data](docs/assets/hero.png)
+![XRD Studio — 실제 실행 화면: 축·피크 숫자 인식과 곡선 추출](docs/screenshots/studio.png)
 
 논문 속 **XRD 그래프를 수치 데이터로.** 이미지 업로드부터 피크 분석까지, 하나의 작업 공간에서.
 
@@ -15,8 +15,6 @@
 
 ## 새 작업 화면 · 축과 피크 숫자 자동 읽기
 
-![XRD Studio — 축과 인쇄 피크 숫자 검토](docs/screenshots/studio.png)
-
 | 자동 읽기 | 원본에서 확인 | 저장하고 분석 |
 |:---:|:---:|:---:|
 | 축 교점 · 눈금 값 · 피크 옆 인쇄 숫자 | 위치 강조 · 값 수정 · 곡선 겹쳐 보기 | 수치 CSV · 인쇄 숫자 CSV · 분석 연결 |
@@ -29,8 +27,10 @@
 
 | ① 그래프 → 수치 | ② 수치 → 분석 |
 |:---:|:---:|
-| ![Digitizer — 곡선 선택과 축 보정](docs/screenshots/digitizer.png) | ![Analyzer — 피크와 결정학 분석](docs/screenshots/analyzer.png) |
-| ROI·곡선 색상 선택 → 축 보정 → JSON 추출 | 피크 피팅 · 결정성 · Scherrer · Williamson–Hall |
+| ![Digitizer — 축·피크 숫자 자동 인식](docs/screenshots/digitizer.png) | ![Analyzer — 추출 데이터의 피크 분석 결과](docs/screenshots/analyzer.png) |
+| 축·피크 숫자 인식 → 원본 확인 → CSV 추출 | 피크 피팅 · 결정성 · Scherrer · Williamson–Hall |
+
+2026-09-09 현재 앱을 직접 캡처했습니다. 내장 합성 예제의 실행 결과입니다. [업로드 화면과 전체 캡처](docs/screenshots/README.md)
 
 ```mermaid
 flowchart LR
