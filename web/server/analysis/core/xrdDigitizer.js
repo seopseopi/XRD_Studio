@@ -239,6 +239,11 @@ async function detectRoiXRD(payload) {
         axis_values:        result.axis_values        ?? null,
         confidence:         result.confidence         ?? null,
         ocr_available:      result.ocr_available      ?? false,
+        ocr_status: result.ocr_status ?? null,
+        annotations: result.annotations ?? [],
+        annotation_status: result.annotation_status ?? 'unavailable',
+        warnings: result.warnings ?? [],
+        confidence_kind: result.confidence_kind ?? null,
       },
       meta: { processingTimeMs: Date.now() - t0 },
     };

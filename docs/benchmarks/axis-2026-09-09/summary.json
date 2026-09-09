@@ -1,0 +1,18 @@
+{
+  "after": {
+    "cases": 48,
+    "within_3px": 48,
+    "boundary_mae_px": 0.15104166666666666,
+    "median_geometry_ms": 70.565,
+    "ocr_cases": 12,
+    "ocr_within_1pct": 12
+  },
+  "before": {
+    "cases": 48,
+    "within_3px": 14,
+    "boundary_mae_px": 84.61458333333333,
+    "median_geometry_ms": 11.965,
+    "ocr_cases": 12,
+    "ocr_within_1pct": 1
+  }
+}

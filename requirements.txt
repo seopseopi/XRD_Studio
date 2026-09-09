@@ -1,6 +1,7 @@
 numpy
 pandas
 Pillow
+pytesseract  # optional system tesseract binary enables numeric OCR
 scipy
 scikit-image   # skeletonize (thinning, morphology); fallback erosion used if missing
 

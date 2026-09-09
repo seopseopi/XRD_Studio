@@ -199,6 +199,10 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
   const [isDetecting, setIsDetecting] = useState(false);
   const [isDetectingColor, setIsDetectingColor] = useState(false);
   const [detectResult, setDetectResult] = useState(null);
+  const [annotations, setAnnotations] = useState([]);
+  const [selectedAnnotation, setSelectedAnnotation] = useState(null);
+  const fileGeneration = useRef(0);
+  useEffect(() => () => { fileGeneration.current += 1; }, []);
 
   // plot_box: boxCorners 3점에서 파생 (자동 감지 또는 수동)
   const detectedBox = React.useMemo(() => {
@@ -209,7 +213,7 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
     return null;
   }, [boxCorners]);
 
-  const [openSections, setOpenSections] = useState({ file: true, box: true, calib: true, color: true });
+  const [openSections, setOpenSections] = useState({ file: false, box: false, calib: true, color: false });
 
   const zoomRef = useRef({ level: 1, panX: 0, panY: 0 });
   const [zoomDisplay, setZoomDisplay] = useState(1);
@@ -292,6 +296,18 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
       ctx.restore();
     }
 
+    annotations.forEach((label, i) => {
+      const [x, y, w, h] = label.bbox;
+      ctx.save();
+      ctx.strokeStyle = i === selectedAnnotation ? '#d97706' : '#8b5cf6';
+      ctx.fillStyle = i === selectedAnnotation ? 'rgba(245,158,11,.15)' : 'rgba(139,92,246,.06)';
+      ctx.lineWidth = i === selectedAnnotation ? 2 : 1;
+      const bx=x*dr.scale+dr.x-3, by=y*dr.scale+dr.y-3;
+      ctx.fillRect(bx,by,w*dr.scale+6,h*dr.scale+6);
+      ctx.strokeRect(bx,by,w*dr.scale+6,h*dr.scale+6);
+      ctx.restore();
+    });
+
     // 영역 3점 (다이아몬드 모양)
     boxCorners.forEach((pt, i) => {
       if (!pt.px) return;
@@ -334,7 +350,7 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
     if (isSelectingMode && magPos) {
       drawMagnifier(ctx, magPos.cx, magPos.cy, dr, imgRef.current, canvas.width, canvas.height, boxCorners, calibPts);
     }
-  }, [boxCorners, calibPts, isSelectingMode, getDisplayRect, overlayData, showOverlay, detectedBox]);
+  }, [boxCorners, calibPts, isSelectingMode, getDisplayRect, overlayData, showOverlay, detectedBox, annotations, selectedAnnotation]);
 
   useEffect(() => { drawCanvas(); }, [drawCanvas]);
 
@@ -423,9 +439,12 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
 
   // ── 파일 처리 ──────────────────────────────────────────────────────────────
   const handleFile = useCallback((file) => {
-    if (!file || !file.type.startsWith('image/')) return;
+    if (!file || !['image/png', 'image/jpeg', 'image/webp'].includes(file.type)) { setRunError('PNG 또는 JPG 이미지 파일을 선택하세요.'); return; }
+    fileGeneration.current += 1;
     setImageUrl(prev => { if (prev) URL.revokeObjectURL(prev); return URL.createObjectURL(file); });
     setImageFile(file);
+    setAnnotations([]);
+    setSelectedAnnotation(null);
     setNaturalSize(null);
     setColorRgb(null);
     setColorPt(null);
@@ -445,12 +464,14 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
   // ── 자동 감지 ─────────────────────────────────────────────────────────────
   const handleAutoDetect = useCallback(async () => {
     if (!imageFile || isDetecting) return;
+    const generation = fileGeneration.current;
     setIsDetecting(true);
     setDetectResult(null);
     try {
       const res = await analysisClient.xrd.detectRoi(imageFile);
+      if (generation !== fileGeneration.current) return;
       if (!res?.success) throw new Error(res?.error?.message || res?.message || '감지 실패');
-      const { calib_points: cp, curve_color: cc, color_sample_point: csp, axis_values: av, confidence, ocr_available } = res.data;
+      const { calib_points: cp, curve_color: cc, color_sample_point: csp, axis_values: av, confidence, ocr_available, warnings, annotations: labels, annotation_status } = res.data;
       const p1 = cp?.p1, p2 = cp?.p2, p3 = cp?.p3;
 
       // 영역 정의 3점 채우기
@@ -462,17 +483,20 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
 
       // 캘리브레이션 4점 채우기 (초기값은 축 끝점, 사용자가 interior tick으로 이동 가능)
       setCalibPts([
-        { px: p1 ? { x: p1.x, y: p1.y } : null, val: av?.x_min != null ? String(av.x_min) : '', autoDetected: !!p1 },
-        { px: p2 ? { x: p2.x, y: p2.y } : null, val: av?.x_max != null ? String(av.x_max) : '', autoDetected: !!p2 },
-        { px: p1 ? { x: p1.x, y: p1.y } : null, val: av?.y_min != null ? String(av.y_min) : '', autoDetected: !!p1 },
-        { px: p3 ? { x: p3.x, y: p3.y } : null, val: av?.y_max != null ? String(av.y_max) : '', autoDetected: !!p3 },
+        { px: p1 ? { x: p1.x, y: p1.y } : null, val: av?.x_min != null ? String(Number(av.x_min.toPrecision(7))) : '', autoDetected: !!p1 },
+        { px: p2 ? { x: p2.x, y: p2.y } : null, val: av?.x_max != null ? String(Number(av.x_max.toPrecision(7))) : '', autoDetected: !!p2 },
+        { px: p1 ? { x: p1.x, y: p1.y } : null, val: av?.y_min != null ? String(Number(av.y_min.toPrecision(7))) : '', autoDetected: !!p1 },
+        { px: p3 ? { x: p3.x, y: p3.y } : null, val: av?.y_max != null ? String(Number(av.y_max.toPrecision(7))) : '', autoDetected: !!p3 },
       ]);
 
       if (cc) setColorRgb({ r: cc[0], g: cc[1], b: cc[2] });
       if (csp) setColorPt({ x: csp[0], y: csp[1] });
-      setDetectResult({ confidence, ocr_available, hasColor: !!cc });
+      setAnnotations((labels || []).map(item => ({ ...item, value: String(item.value) })));
+      setSelectedAnnotation(null);
+      setDetectResult({ confidence, ocr_available, warnings, annotation_status, valuesComplete: [av?.x_min, av?.x_max, av?.y_min, av?.y_max].every(v => Number.isFinite(v)), hasColor: !!cc });
+      setOpenSections(prev => ({ ...prev, calib: true, box: false }));
     } catch (err) {
-      setDetectResult({ error: err.message || '자동 감지 실패' });
+      if (generation === fileGeneration.current) setDetectResult({ error: err.message || '자동 감지 실패' });
     } finally {
       setIsDetecting(false);
     }
@@ -480,9 +504,11 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
 
   const handleAutoDetectColor = useCallback(async () => {
     if (!imageFile || isDetectingColor) return;
+    const generation = fileGeneration.current;
     setIsDetectingColor(true);
     try {
       const res = await analysisClient.xrd.detectRoi(imageFile);
+      if (generation !== fileGeneration.current) return;
       if (!res?.success) throw new Error(res?.error?.message || res?.message || '색상 감지 실패');
       const { curve_color: cc, color_sample_point: csp } = res.data;
       if (!cc) throw new Error('색상을 감지할 수 없습니다');
@@ -591,12 +617,15 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
 
   // ── 유효성 ────────────────────────────────────────────────────────────────
   const boxValid   = boxCorners.every(p => p.px !== null) && detectedBox !== null;
-  const calibValid = calibPts.every(p => p.px !== null && p.val !== '' && !isNaN(parseFloat(p.val)));
+  const calibValid = calibPts.every(p => p.px !== null && p.val !== '' && Number.isFinite(Number(p.val)))
+    && Number(calibPts[0].val) !== Number(calibPts[1].val) && Number(calibPts[2].val) !== Number(calibPts[3].val)
+    && calibPts[0].px.x !== calibPts[1].px.x && calibPts[2].px.y !== calibPts[3].px.y;
   const canRun     = !!(imageFile && boxValid && calibValid && colorRgb && colorPt);
 
   // ── 실행 ──────────────────────────────────────────────────────────────────
   const handleRun = useCallback(async () => {
     if (!canRun || !colorPt) return;
+    const generation = fileGeneration.current;
     setIsLoading(true);
     setRunError(null);
     try {
@@ -612,6 +641,7 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
         curve_color_rgb: [colorRgb.r, colorRgb.g, colorRgb.b],
       };
       const res = await analysisClient.xrd.digitize(imageFile, manualInputs);
+      if (generation !== fileGeneration.current) return;
       if (!res?.success) throw new Error(res?.error?.message || '디지타이즈 실패');
       onDigitizeComplete?.(res.data);
       setOverlayData({ two_theta_values: res.data.two_theta_values, intensities: res.data.intensities });
@@ -625,7 +655,7 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
 
   // ── 툴바 주입 ─────────────────────────────────────────────────────────────
   useEffect(() => {
-    if (!setToolbarContent) return;
+    if (!setToolbarContent || mode !== 'digitize') return;
 
     const colorHex = colorRgb ? rgbToHex(colorRgb.r, colorRgb.g, colorRgb.b) : '#000000';
 
@@ -650,25 +680,6 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
 
     setToolbarContent(
       <div className="xrd-analysis-settings-panel" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-
-        {/* 모드 토글 */}
-        <div style={{ padding: '12px 16px 10px', borderBottom: '1px solid #eeeeee', flexShrink: 0 }}>
-          <div style={{ display: 'flex', borderRadius: 8, overflow: 'hidden', border: '1px solid #e2e8f0' }}>
-            {[{ key: 'analyze', label: '📊 파일 분석' }, { key: 'digitize', label: '🔬 이미지 디지타이저' }].map(({ key, label }) => (
-              <button
-                key={key}
-                type="button"
-                onClick={() => setMode(key)}
-                style={{
-                  flex: 1, padding: '7px 4px', fontSize: 11, fontWeight: mode === key ? 700 : 400,
-                  background: mode === key ? '#2563eb' : '#fff',
-                  color: mode === key ? '#fff' : '#475569',
-                  border: 'none', cursor: 'pointer', transition: 'all 0.15s', lineHeight: 1.3,
-                }}
-              >{label}</button>
-            ))}
-          </div>
-        </div>
 
         <div className="xrd-settings-accordion" style={{ flex: 1, overflowY: 'auto' }}>
 
@@ -721,13 +732,14 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
             >
               {isDetecting
                 ? <>처리 중<span style={{ animation: 'dotBlink 1.2s 0.0s ease-in-out infinite' }}>.</span><span style={{ animation: 'dotBlink 1.2s 0.4s ease-in-out infinite' }}>.</span><span style={{ animation: 'dotBlink 1.2s 0.8s ease-in-out infinite' }}>.</span></>
-                : '🔍 영역 + 축 자동 감지'}
+                : '축 · 피크 숫자 자동 읽기'}
             </button>
             {detectResult && !detectResult.error && (
               <div style={{ marginBottom: 6, padding: '5px 8px', borderRadius: 5, fontSize: 11, lineHeight: 1.5, background: '#f0fdf4', border: '1px solid #86efac', color: '#166534' }}>
-                ✓ 자동 감지 완료 — 신뢰도 {Math.round((detectResult.confidence ?? 0) * 100)}%
+                ✓ 축 위치 감지 — 선 검출 점수 {Math.round((detectResult.confidence ?? 0) * 100)}%
                 {detectResult.hasColor ? ' · 색상 감지됨' : ''}
-                {detectResult.ocr_available ? ' · 축값 채워짐' : ' · 축값은 직접 입력해주세요'}
+                {detectResult.valuesComplete ? ' · 축 숫자 인식됨. 원본과 확인하세요.' : ' · 인식하지 못한 축값을 직접 입력하세요.'}
+                {detectResult.warnings?.map(w => <div key={w}>{w}</div>)}
               </div>
             )}
             {detectResult?.error && (
@@ -737,8 +749,19 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
             )}
           </div>
 
+          {detectResult && !detectResult.error && <AccordionSection title={`피크 · 점 숫자 (${annotations.length})`} open={openSections.labels !== false} onToggle={() => toggleSection('labels')}>
+            <p className="studio-label-hint">그래프 내부의 인쇄 숫자 후보입니다. 항목을 누르면 원본 위치가 강조됩니다. 값을 확인하거나 수정하세요.</p>
+            {!annotations.length && <p className="studio-label-hint">{detectResult.annotation_status === 'unavailable' ? '숫자 인식기를 사용할 수 없습니다.' : '읽을 수 있는 숫자를 찾지 못했습니다.'}</p>}
+            {annotations.map((item, i) => <div className="studio-label-row" key={i}>
+              <button type="button" aria-label={`숫자 ${i+1} 위치 보기`} aria-pressed={selectedAnnotation === i} onClick={() => setSelectedAnnotation(i)}>{String(i+1).padStart(2,'0')} ↗</button>
+              <input type="number" step="any" aria-label={`인식 숫자 ${i+1}`} value={item.value} onFocus={() => setSelectedAnnotation(i)} onChange={e => { const value=e.target.value; setAnnotations(prev => prev.map((v,j) => j===i ? {...v,value,reviewed:true} : v)); }} />
+              <button type="button" aria-label={`숫자 ${i+1} 삭제`} onClick={() => { setAnnotations(prev => prev.filter((_,j) => j!==i)); setSelectedAnnotation(null); }}>×</button>
+            </div>)}
+            {!!annotations.length && <button className="studio-label-export" disabled={annotations.some(item => item.value === '' || !Number.isFinite(Number(item.value)))} onClick={() => { const csv='value,label_x,label_y,width,height,edited\n'+annotations.map(a => [Number(a.value),...a.bbox,a.reviewed].join(',')).join('\n'); const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'})); const link=document.createElement('a');link.href=url;link.download='xrd_printed_numbers.csv';link.click();setTimeout(() => URL.revokeObjectURL(url),1000); }}>인식 숫자 CSV 저장 ↓</button>}
+          </AccordionSection>}
+
           {/* ── 영역 설정 (3점) ── */}
-          <AccordionSection title="① 영역 설정 (3점)" open={openSections.box} onToggle={() => toggleSection('box')}>
+          <AccordionSection title="영역 미세 조정" open={openSections.box} onToggle={() => toggleSection('box')}>
             <div style={{ padding: '4px 8px 8px', borderRadius: 6, background: '#f8fafc', border: '1px solid #e2e8f0', fontSize: 11, color: '#64748b', lineHeight: 1.5, marginBottom: 8 }}>
               그래프 영역을 정의하는 3개의 코너 점을 지정하세요.<br />
               <b>원점</b> → <b>X축 끝</b> → <b>Y축 끝</b> 순서로 클릭.
@@ -831,7 +854,7 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
           </AccordionSection>
 
           {/* ── 캘리브레이션 (4점) ── */}
-          <AccordionSection title="② 캘리브레이션 (4점)" open={openSections.calib} onToggle={() => toggleSection('calib')}>
+          <AccordionSection title="축 숫자 확인" open={openSections.calib} onToggle={() => toggleSection('calib')}>
             <div style={{ padding: '4px 8px 8px', borderRadius: 6, background: '#f8fafc', border: '1px solid #e2e8f0', fontSize: 11, color: '#64748b', lineHeight: 1.5, marginBottom: 8 }}>
               x축 tick 2개, y축 tick 2개를 클릭하고 해당 값을 입력하세요.<br />
               <b>축 끝점을 모르면</b> 보이는 아무 눈금 2개라도 OK — 선형 외삽으로 변환됨.
@@ -945,7 +968,7 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
           </AccordionSection>
 
           {/* 곡선 색상 */}
-          <AccordionSection title="③ 곡선 색상" open={openSections.color} onToggle={() => toggleSection('color')}>
+          <AccordionSection title="곡선 색상 조정" open={openSections.color} onToggle={() => toggleSection('color')}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
               <div style={{ width: 20, height: 20, borderRadius: 4, flexShrink: 0, border: '1px solid #e2e8f0', background: colorRgb ? colorHex : '#e2e8f0' }} />
               {colorRgb ? (
@@ -1050,7 +1073,7 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
     calibPts, calibMode, calibValid,
     colorRgb, colorPt, isEyedropperMode,
     isLoading, runError, canRun,
-    isDetecting, isDetectingColor, detectResult,
+    isDetecting, isDetectingColor, detectResult, annotations, selectedAnnotation,
     handleRun, handleAutoDetect, handleAutoDetectColor, toggleSection,
   ]);
 
@@ -1058,14 +1081,22 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
   const colorHex = colorRgb ? rgbToHex(colorRgb.r, colorRgb.g, colorRgb.b) : '#000000';
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, minHeight: 0 }}>
-      <input ref={fileInputRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileInputChange} />
-      <input ref={replaceInputRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handleFileInputChange} />
+    <div className="studio-digitizer" style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0, minHeight: 0 }}>
+      <input ref={fileInputRef} type="file" accept="image/png,image/jpeg,image/webp" style={{ display: 'none' }} onChange={handleFileInputChange} />
+      <input ref={replaceInputRef} type="file" accept="image/png,image/jpeg,image/webp" style={{ display: 'none' }} onChange={handleFileInputChange} />
       <input ref={colorInputRef} type="color" value={colorHex} style={{ display: 'none' }} onChange={handleColorPickerChange} />
 
+      <ol className="studio-steps" aria-label="추출 진행 상태">
+        {[['이미지 업로드', !!imageFile], ['축 · 색상 확인', canRun], ['데이터 추출', !!overlayData]].map(([label, done], i) => <li key={label} className={done ? 'is-complete' : ''}><span>{done ? '✓' : `0${i+1}`}</span>{label}</li>)}
+      </ol>
+      {imageFile && <div className="studio-image-bar"><div><strong>{imageFile.name}</strong><small>{naturalSize ? `${naturalSize.w || naturalSize.width} × ${naturalSize.h || naturalSize.height} px` : '이미지 불러오는 중'}</small></div><div className="studio-image-actions"><button disabled={isDetecting || isLoading} onClick={handleAutoDetect}>{isDetecting ? '축 읽는 중…' : '축 · 숫자 자동 읽기'}</button><button className="studio-primary" disabled={!canRun || isLoading || isDetecting} onClick={handleRun}>{isLoading ? '추출 중…' : '데이터 추출 →'}</button></div></div>}
+      {imageFile && <p className="studio-context" role="status">{isDetecting ? '축 교점과 눈금 숫자를 확인하고 있습니다.' : !boxValid ? '축 자동 감지를 실행하거나 설정 패널에서 영역을 지정하세요.' : !calibValid ? '영역을 찾았습니다. 설정 패널에서 X·Y축 숫자를 확인하세요.' : !colorRgb ? '추출할 곡선의 색상을 선택하세요.' : '추출 준비 완료 · 원본 이미지와 축 숫자가 일치하는지 확인하세요.'}</p>}
+      {(runError || detectResult?.error) && <div className="studio-error" role="alert">{runError || detectResult.error}</div>}
+      {overlayData && <div className="studio-result" role="status"><div><strong>추출 완료 · {overlayData.two_theta_values.length.toLocaleString()}개 데이터 포인트</strong><small>이미지 위의 추출선을 확인한 뒤 저장하거나 분석을 이어가세요.</small></div><button onClick={() => { const csv = 'two_theta,intensity\n' + overlayData.two_theta_values.map((x,i) => `${x},${overlayData.intensities[i]}`).join('\n'); const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' })); const a = document.createElement('a'); a.href = url; a.download = 'xrd_digitized.csv'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); }}>CSV 저장 ↓</button><button onClick={() => setMode('analyze')}>분석으로 열기 →</button></div>}
       {!imageFile ? (
         <div
-          className={`xrd-settings-dropzone${isDragOver ? ' xrd-settings-dropzone--active' : ''}`}
+          role="region" aria-label="XRD 이미지 업로드"
+          className={`studio-upload xrd-settings-dropzone${isDragOver ? ' xrd-settings-dropzone--active' : ''}`}
           style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: 24, borderRadius: 12, cursor: 'pointer' }}
           onDrop={handleDrop}
           onDragOver={e => { e.preventDefault(); setIsDragOver(true); }}
@@ -1078,11 +1109,14 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
               <path d="M3 15l5-5 4 4 3-3 6 6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>
-          <p className="xrd-settings-dropzone-main">XRD 패턴 이미지 업로드</p>
-          <p className="xrd-settings-dropzone-hint">PNG / JPG / TIFF — 드래그하거나 클릭해서 선택</p>
+          <p className="xrd-settings-dropzone-main">그래프 이미지를 여기에 놓으세요</p>
+          <p className="xrd-settings-dropzone-hint">PNG · JPG · WEBP — 클릭해서 파일 선택</p>
+          <button type="button" className="studio-upload-cta">이미지 선택 <span aria-hidden="true">↗</span></button>
+          <button className="studio-demo" type="button" onClick={async e => { e.stopPropagation(); try { const res = await fetch('/demo-xrd.png'); if (!res.ok) throw new Error(); handleFile(new File([await res.blob()], 'demo-xrd.png', { type: 'image/png' })); } catch { setRunError('예제 이미지를 불러오지 못했습니다. 파일을 직접 선택하세요.'); } }} onKeyDown={e => e.stopPropagation()}>파일 없이 예제로 체험하기</button>
+          <div className="studio-upload-features"><span>01 축 자동 감지</span><span>02 원본 위에서 보정</span><span>03 수치 데이터 추출</span></div>
         </div>
       ) : (
-        <div ref={imgContainerRef} style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#f1f5f9' }}>
+        <div ref={imgContainerRef} className="studio-canvas" style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#f1f5f9' }}>
           <img
             ref={imgRef}
             src={imageUrl}

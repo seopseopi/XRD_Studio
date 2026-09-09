@@ -88,7 +88,7 @@ const XRDAnalyzer = () => {
   const { setToolbarContent, setToolbarFooterContent } = useToolbarContent();
 
   // 모드: 'analyze' | 'digitize'
-  const [mode, setMode] = useState('analyze');
+  const [mode, setMode] = useState('digitize');
 
   // State
   const [xrdData, setXrdData] = useState(null);
@@ -264,7 +264,7 @@ const XRDAnalyzer = () => {
     setQpaResult(null);
     setStressResult(null);
     setRietveldInfo(null);
-    setMode('analyze');
+
   };
 
   // 분석 실행
@@ -936,24 +936,6 @@ const XRDAnalyzer = () => {
 
     setToolbarContent(
       <div className="xrd-analysis-settings-panel" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        {/* 입력 모드 토글 */}
-        <div style={{ padding: '12px 16px 10px', borderBottom: '1px solid #eeeeee', flexShrink: 0 }}>
-          <div style={{ display: 'flex', borderRadius: 8, overflow: 'hidden', border: '1px solid #e2e8f0' }}>
-            {[{ key: 'analyze', label: '📊 파일 분석' }, { key: 'digitize', label: '🔬 이미지 디지타이저' }].map(({ key, label }) => (
-              <button
-                key={key}
-                type="button"
-                onClick={() => setMode(key)}
-                style={{
-                  flex: 1, padding: '7px 4px', fontSize: 11, fontWeight: mode === key ? 700 : 400,
-                  background: mode === key ? '#2563eb' : '#fff',
-                  color: mode === key ? '#fff' : '#475569',
-                  border: 'none', cursor: 'pointer', transition: 'all 0.15s', lineHeight: 1.3,
-                }}
-              >{label}</button>
-            ))}
-          </div>
-        </div>
         {/* 기존 분석 설정 패널 */}
         <XRDAnalysisSettingsPanel
           settings={settings}
@@ -1077,15 +1059,18 @@ const XRDAnalyzer = () => {
   );
 
   return (
-    <div className="data-management">
-      {mode === 'digitize' && (
+    <div className="data-management studio-workspace">
+      <div className="studio-workspace-heading"><div><p className="studio-eyebrow">X-RAY DIFFRACTION WORKSPACE</p><h1>{mode === 'digitize' ? '그래프를 정확한 데이터로' : '패턴을 읽고, 구조를 분석하세요'}</h1></div>
+        <nav className="studio-tabs" aria-label="작업 모드">{[{ key: 'digitize', label: '이미지 추출' }, { key: 'analyze', label: '데이터 분석' }].map(tab => <button type="button" key={tab.key} aria-pressed={mode === tab.key} onClick={() => setMode(tab.key)}>{tab.label}</button>)}</nav>
+      </div>
+      <div className="studio-digitize-pane" style={{ display: mode === 'digitize' ? 'flex' : 'none', flex: 1, minHeight: 0, flexDirection: 'column' }}>
         <XRDDigitizer
           onDigitizeComplete={handleDigitizeComplete}
           mode={mode}
           setMode={setMode}
           setToolbarContent={setToolbarContent}
         />
-      )}
+      </div>
 
       {mode === 'analyze' && (
         <div className="xrd-analyzer-root">

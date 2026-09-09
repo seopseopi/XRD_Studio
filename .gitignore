@@ -52,3 +52,7 @@ ml/weights/
 *.pt
 *.pth
 *.onnx
+
+# Local browser verification artifacts
+.playwright-cli/
+/output/playwright/

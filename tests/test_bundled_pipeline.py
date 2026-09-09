@@ -13,7 +13,8 @@ BUNDLE = ROOT / 'web/server/analysis/python/xrd_digitizer'
 
 def test_bundled_core_matches_root():
     for name in ['preprocess/simple_trace.py', 'calibrate/axis_mapping.py',
-                 'calibrate/numeric_export.py', 'runner/run_simple.py']:
+                 'calibrate/numeric_export.py', 'runner/run_simple.py',
+                 'preprocess/auto_detect.py', 'runner/run_detect.py']:
         assert (ROOT / name).read_text() == (BUNDLE / name).read_text(), name
 
 

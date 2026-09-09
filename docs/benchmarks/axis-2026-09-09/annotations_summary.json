@@ -1,0 +1,8 @@
+{
+  "cases": 6,
+  "correct": 29,
+  "detected": 29,
+  "expected": 30,
+  "precision": 1.0,
+  "recall": 0.9666666666666667
+}

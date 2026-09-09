@@ -1,0 +1,548 @@
+[
+  {
+    "case": 0,
+    "scale": 1,
+    "dark": false,
+    "blur": false,
+    "truth": [
+      {
+        "value": 18.25,
+        "label_center_x": 257.8571428571429
+      },
+      {
+        "value": 29.64,
+        "label_center_x": 420.57142857142856
+      },
+      {
+        "value": 43.18,
+        "label_center_x": 614.0
+      },
+      {
+        "value": 57.32,
+        "label_center_x": 816.0
+      },
+      {
+        "value": 72.06,
+        "label_center_x": 1026.5714285714284
+      }
+    ],
+    "found": [
+      {
+        "text": "18.25",
+        "value": 18.25,
+        "bbox": [
+          235,
+          282,
+          48,
+          15
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "29.64",
+        "value": 29.64,
+        "bbox": [
+          396,
+          179,
+          49,
+          15
+        ],
+        "ocr_score": 95.0,
+        "reviewed": false
+      },
+      {
+        "text": "43.18",
+        "value": 43.18,
+        "bbox": [
+          589,
+          322,
+          50,
+          15
+        ],
+        "ocr_score": 95.0,
+        "reviewed": false
+      },
+      {
+        "text": "57.32",
+        "value": 57.32,
+        "bbox": [
+          792,
+          219,
+          49,
+          15
+        ],
+        "ocr_score": 94.0,
+        "reviewed": false
+      },
+      {
+        "text": "72.06",
+        "value": 72.06,
+        "bbox": [
+          1002,
+          139,
+          49,
+          15
+        ],
+        "ocr_score": 94.0,
+        "reviewed": false
+      }
+    ],
+    "correct": 5,
+    "expected": 5,
+    "status": "read"
+  },
+  {
+    "case": 1,
+    "scale": 0.8,
+    "dark": false,
+    "blur": false,
+    "truth": [
+      {
+        "value": 18.25,
+        "label_center_x": 206.28571428571428
+      },
+      {
+        "value": 29.64,
+        "label_center_x": 336.45714285714286
+      },
+      {
+        "value": 43.18,
+        "label_center_x": 491.2
+      },
+      {
+        "value": 57.32,
+        "label_center_x": 652.8000000000001
+      },
+      {
+        "value": 72.06,
+        "label_center_x": 821.2571428571429
+      }
+    ],
+    "found": [
+      {
+        "text": "18.25",
+        "value": 18.25,
+        "bbox": [
+          187,
+          226,
+          38,
+          13
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "29.64",
+        "value": 29.64,
+        "bbox": [
+          316,
+          144,
+          39,
+          13
+        ],
+        "ocr_score": 95.0,
+        "reviewed": false
+      },
+      {
+        "text": "43.18",
+        "value": 43.18,
+        "bbox": [
+          471,
+          258,
+          39,
+          13
+        ],
+        "ocr_score": 94.0,
+        "reviewed": false
+      },
+      {
+        "text": "57.32",
+        "value": 57.32,
+        "bbox": [
+          634,
+          176,
+          39,
+          13
+        ],
+        "ocr_score": 93.0,
+        "reviewed": false
+      },
+      {
+        "text": "72.06",
+        "value": 72.06,
+        "bbox": [
+          801,
+          112,
+          39,
+          13
+        ],
+        "ocr_score": 91.0,
+        "reviewed": false
+      }
+    ],
+    "correct": 5,
+    "expected": 5,
+    "status": "read"
+  },
+  {
+    "case": 2,
+    "scale": 1.2,
+    "dark": false,
+    "blur": false,
+    "truth": [
+      {
+        "value": 18.25,
+        "label_center_x": 309.42857142857144
+      },
+      {
+        "value": 29.64,
+        "label_center_x": 504.6857142857143
+      },
+      {
+        "value": 43.18,
+        "label_center_x": 736.8
+      },
+      {
+        "value": 57.32,
+        "label_center_x": 979.2
+      },
+      {
+        "value": 72.06,
+        "label_center_x": 1231.8857142857144
+      }
+    ],
+    "found": [
+      {
+        "text": "18.25",
+        "value": 18.25,
+        "bbox": [
+          281,
+          339,
+          56,
+          17
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "29.64",
+        "value": 29.64,
+        "bbox": [
+          476,
+          216,
+          58,
+          17
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "43.18",
+        "value": 43.18,
+        "bbox": [
+          707,
+          387,
+          58,
+          17
+        ],
+        "ocr_score": 94.0,
+        "reviewed": false
+      },
+      {
+        "text": "57.32",
+        "value": 57.32,
+        "bbox": [
+          950,
+          264,
+          58,
+          17
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "72.06",
+        "value": 72.06,
+        "bbox": [
+          1203,
+          168,
+          58,
+          17
+        ],
+        "ocr_score": 93.0,
+        "reviewed": false
+      }
+    ],
+    "correct": 5,
+    "expected": 5,
+    "status": "read"
+  },
+  {
+    "case": 3,
+    "scale": 1,
+    "dark": true,
+    "blur": false,
+    "truth": [
+      {
+        "value": 18.25,
+        "label_center_x": 257.8571428571429
+      },
+      {
+        "value": 29.64,
+        "label_center_x": 420.57142857142856
+      },
+      {
+        "value": 43.18,
+        "label_center_x": 614.0
+      },
+      {
+        "value": 57.32,
+        "label_center_x": 816.0
+      },
+      {
+        "value": 72.06,
+        "label_center_x": 1026.5714285714284
+      }
+    ],
+    "found": [
+      {
+        "text": "18.25",
+        "value": 18.25,
+        "bbox": [
+          235,
+          282,
+          48,
+          15
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "29.64",
+        "value": 29.64,
+        "bbox": [
+          396,
+          179,
+          49,
+          15
+        ],
+        "ocr_score": 95.0,
+        "reviewed": false
+      },
+      {
+        "text": "43.18",
+        "value": 43.18,
+        "bbox": [
+          589,
+          322,
+          50,
+          15
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "72.06",
+        "value": 72.06,
+        "bbox": [
+          1002,
+          139,
+          49,
+          15
+        ],
+        "ocr_score": 94.0,
+        "reviewed": false
+      }
+    ],
+    "correct": 4,
+    "expected": 5,
+    "status": "read"
+  },
+  {
+    "case": 4,
+    "scale": 1,
+    "dark": false,
+    "blur": true,
+    "truth": [
+      {
+        "value": 18.25,
+        "label_center_x": 257.8571428571429
+      },
+      {
+        "value": 29.64,
+        "label_center_x": 420.57142857142856
+      },
+      {
+        "value": 43.18,
+        "label_center_x": 614.0
+      },
+      {
+        "value": 57.32,
+        "label_center_x": 816.0
+      },
+      {
+        "value": 72.06,
+        "label_center_x": 1026.5714285714284
+      }
+    ],
+    "found": [
+      {
+        "text": "18.25",
+        "value": 18.25,
+        "bbox": [
+          235,
+          282,
+          48,
+          16
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "29.64",
+        "value": 29.64,
+        "bbox": [
+          396,
+          178,
+          49,
+          16
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "43.18",
+        "value": 43.18,
+        "bbox": [
+          588,
+          322,
+          50,
+          16
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "57.32",
+        "value": 57.32,
+        "bbox": [
+          792,
+          218,
+          49,
+          16
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "72.06",
+        "value": 72.06,
+        "bbox": [
+          1002,
+          138,
+          49,
+          16
+        ],
+        "ocr_score": 95.0,
+        "reviewed": false
+      }
+    ],
+    "correct": 5,
+    "expected": 5,
+    "status": "read"
+  },
+  {
+    "case": 5,
+    "scale": 0.8,
+    "dark": false,
+    "blur": true,
+    "truth": [
+      {
+        "value": 18.25,
+        "label_center_x": 206.28571428571428
+      },
+      {
+        "value": 29.64,
+        "label_center_x": 336.45714285714286
+      },
+      {
+        "value": 43.18,
+        "label_center_x": 491.2
+      },
+      {
+        "value": 57.32,
+        "label_center_x": 652.8000000000001
+      },
+      {
+        "value": 72.06,
+        "label_center_x": 821.2571428571429
+      }
+    ],
+    "found": [
+      {
+        "text": "18.25",
+        "value": 18.25,
+        "bbox": [
+          187,
+          226,
+          38,
+          13
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "29.64",
+        "value": 29.64,
+        "bbox": [
+          316,
+          144,
+          40,
+          13
+        ],
+        "ocr_score": 95.0,
+        "reviewed": false
+      },
+      {
+        "text": "43.18",
+        "value": 43.18,
+        "bbox": [
+          471,
+          258,
+          40,
+          13
+        ],
+        "ocr_score": 96.0,
+        "reviewed": false
+      },
+      {
+        "text": "57.32",
+        "value": 57.32,
+        "bbox": [
+          633,
+          176,
+          39,
+          13
+        ],
+        "ocr_score": 94.0,
+        "reviewed": false
+      },
+      {
+        "text": "72.06",
+        "value": 72.06,
+        "bbox": [
+          801,
+          112,
+          39,
+          13
+        ],
+        "ocr_score": 94.0,
+        "reviewed": false
+      }
+    ],
+    "correct": 5,
+    "expected": 5,
+    "status": "read"
+  }
+]

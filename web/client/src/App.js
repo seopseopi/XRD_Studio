@@ -8,6 +8,10 @@ import './App.css';
 function AppContent() {
   return (
     <ToolbarContentProvider>
+      <header className="studio-header">
+        <a className="studio-brand" href="/xrd"><span className="studio-mark" aria-hidden="true">∿</span><span>XRD <strong>Studio</strong><small>패턴에서 데이터로</small></span></a>
+        <div className="studio-header-actions"><span className="studio-version">DIGITIZE / ANALYZE</span><button type="button" onClick={() => document.getElementById('studio-settings')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>설정 패널 ↗</button></div>
+      </header>
       <div className="frame-changable xrd-standalone">
         <div className="frame-changable-child xrd-main">
           <div id="main-contents-container">
@@ -27,9 +31,9 @@ function AppContent() {
             </div>
           </div>
         </div>
-        <div className="frame-changable-child xrd-toolbar">
+        <aside id="studio-settings" aria-label="분석 설정" className="frame-changable-child xrd-toolbar">
           <Toolbar />
-        </div>
+        </aside>
       </div>
     </ToolbarContentProvider>
   );

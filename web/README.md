@@ -1,4 +1,4 @@
-# XRD Web App
+# XRD Studio
 
 React (client) + Express (server) 기반의 XRD 디지타이저 & 분석 도구.
 Python 파이프라인을 `child_process`로 호출해 이미지 → 수치 변환을 처리하고,
@@ -18,6 +18,32 @@ web/
         ├── core/xrd.js            # 결정학적 분석 (JS)
         └── core/xrdDigitizer.js   # Python 파이프라인 호출 wrapper
 ```
+
+## 이미지에서 바로 시작
+
+1. **파일 없이 예제로 체험하기** 또는 PNG·JPG·WEBP 업로드.
+2. **축 · 숫자 자동 읽기**로 축과 피크 옆 숫자를 찾습니다.
+3. 숫자 목록에서 원본 위치를 확인하고 오독을 수정·삭제합니다.
+4. 축 숫자와 곡선 색상을 확인한 뒤 **데이터 추출**을 누릅니다.
+5. 원본 위 추출선을 확인하고 CSV 저장 또는 분석으로 이동합니다.
+
+인쇄 숫자 CSV는 수치 곡선 CSV와 별도로 저장합니다. 인쇄 숫자의 위치는 문자 상자 좌표이며 실제 피크 정점 좌표가 아닙니다. [지원 범위와 측정 결과](../docs/axis-detection.md)
+
+### 한 포트에서 실행
+
+저장소 루트에서 실행합니다. 숫자 OCR에는 시스템 Tesseract가 필요합니다.
+
+```bash
+python -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+# macOS
+brew install tesseract
+npm run install:all --prefix web
+npm run build --prefix web/client
+XRD_DIGITIZER_PYTHON="$PWD/.venv/bin/python" PORT=5000 npm run start:server --prefix web
+```
+
+브라우저에서 http://localhost:5000/xrd 를 엽니다.
 
 ## 🚀 Quick Start
 

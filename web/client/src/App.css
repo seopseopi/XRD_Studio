@@ -42,3 +42,4 @@
 
 /* === Modern theme (loaded LAST to override legacy) === */
 @import './style/modern-theme.css';
+@import './style/studio.css';

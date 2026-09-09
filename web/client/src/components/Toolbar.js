@@ -43,7 +43,7 @@ const Toolbar = () => {
     <div className="box-col group-align-std" id="toolbar">
       <div className="toolbar-inner">
         <div className="toolbar-header-strip">
-          <h4 className="toolbar-title">도구</h4>
+          <h4 className="toolbar-title">작업 설정</h4>
         </div>
 
         <div className="toolbar-scroll-area">

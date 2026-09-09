@@ -1,0 +1,2066 @@
+[
+  {
+    "case": "00_clean.png",
+    "seed": 9102026,
+    "style": "clean",
+    "plot_box": [
+      242,
+      79,
+      1287,
+      582
+    ],
+    "size": [
+      1379,
+      695
+    ],
+    "after": {
+      "pred": [
+        242,
+        79,
+        1287,
+        582
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 83.94,
+      "ocr_values": {
+        "x_min": 9.987246798771972,
+        "x_max": 80.01275320122808,
+        "y_min": -5.9523102329858375,
+        "y_max": 10003.968206821988
+      },
+      "ocr_max_relative_error": 0.0005952310232985838,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        243,
+        80,
+        1286,
+        559
+      ],
+      "valid": true,
+      "boundary_mae_px": 6.5,
+      "within_3px": false,
+      "geometry_ms": 18.04,
+      "ocr_values": {
+        "x_min": 10.0,
+        "x_max": 80.0,
+        "y_min": 2.0,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": 0.999,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "01_open.png",
+    "seed": 9102027,
+    "style": "open",
+    "plot_box": [
+      200,
+      72,
+      1058,
+      484
+    ],
+    "size": [
+      1279,
+      571
+    ],
+    "after": {
+      "pred": [
+        200,
+        72,
+        1058,
+        484
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 63.08,
+      "ocr_values": {
+        "x_min": 9.972808031387514,
+        "x_max": 80.0271919686125,
+        "y_min": 7.299141381196023,
+        "y_max": 9995.133905745872
+      },
+      "ocr_max_relative_error": 0.0007299141381196023,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        201,
+        285,
+        639,
+        466
+      ],
+      "valid": true,
+      "boundary_mae_px": 162.75,
+      "within_3px": false,
+      "geometry_ms": 14.95,
+      "ocr_values": {
+        "x_min": 10.0,
+        "x_max": 80.0,
+        "y_min": 2.0,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": 0.999,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "02_grid.png",
+    "seed": 9102028,
+    "style": "grid",
+    "plot_box": [
+      252,
+      68,
+      1267,
+      637
+    ],
+    "size": [
+      1361,
+      831
+    ],
+    "after": {
+      "pred": [
+        252,
+        68,
+        1267,
+        637
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 94.72,
+      "ocr_values": {
+        "x_min": 9.986870038825579,
+        "x_max": 80.01312996117446,
+        "y_min": -5.263109040110066,
+        "y_max": 10003.508739360075
+      },
+      "ocr_max_relative_error": 0.0005263109040110067,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        659,
+        410,
+        860,
+        522
+      ],
+      "valid": true,
+      "boundary_mae_px": 317.75,
+      "within_3px": false,
+      "geometry_ms": 7.18,
+      "ocr_values": {
+        "x_min": null,
+        "x_max": null,
+        "y_min": 10.0,
+        "y_max": 10000.0
+      },
+      "ocr_max_relative_error": null,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "03_dark.png",
+    "seed": 9102029,
+    "style": "dark",
+    "plot_box": [
+      259,
+      102,
+      1064,
+      572
+    ],
+    "size": [
+      1325,
+      691
+    ],
+    "after": {
+      "pred": [
+        259,
+        102,
+        1064,
+        572
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 81.24,
+      "ocr_values": {
+        "x_min": 9.983446917415892,
+        "x_max": 80.01655308258411,
+        "y_min": -3.637978807091713e-12,
+        "y_max": 10000.000000000004
+      },
+      "ocr_max_relative_error": 0.00023647260834443225,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        261,
+        104,
+        1062,
+        570
+      ],
+      "valid": true,
+      "boundary_mae_px": 2.0,
+      "within_3px": true,
+      "geometry_ms": 13.11,
+      "ocr_values": {
+        "x_min": 1.0,
+        "x_max": 8.0,
+        "y_min": 2.0,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": 1.0285714285714285,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "04_blur.png",
+    "seed": 9102030,
+    "style": "blur",
+    "plot_box": [
+      193,
+      159,
+      1060,
+      771
+    ],
+    "size": [
+      1154,
+      913
+    ],
+    "after": {
+      "pred": [
+        193,
+        159,
+        1060,
+        771
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 93.69,
+      "ocr_values": {
+        "x_min": 9.983505020473562,
+        "x_max": 80.01120329213906,
+        "y_min": 4.909944369952427,
+        "y_max": 9996.726703753353
+      },
+      "ocr_max_relative_error": 0.0004909944369952427,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        471,
+        162,
+        1057,
+        734
+      ],
+      "valid": true,
+      "boundary_mae_px": 80.25,
+      "within_3px": false,
+      "geometry_ms": 14.66,
+      "ocr_values": {
+        "x_min": 10.0,
+        "x_max": 80.0,
+        "y_min": 10.0,
+        "y_max": 10000.0
+      },
+      "ocr_max_relative_error": 0.001,
+      "ocr_within_1pct": true
+    }
+  },
+  {
+    "case": "05_noise.png",
+    "seed": 9102031,
+    "style": "noise",
+    "plot_box": [
+      194,
+      93,
+      811,
+      730
+    ],
+    "size": [
+      990,
+      965
+    ],
+    "after": {
+      "pred": [
+        194,
+        93,
+        811,
+        730
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 80.9,
+      "ocr_values": {
+        "x_min": 9.992887483398146,
+        "x_max": 80.0008089040122,
+        "y_min": 4.716946312444634,
+        "y_max": 9996.855369125042
+      },
+      "ocr_max_relative_error": 0.00047169463124446337,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        196,
+        95,
+        809,
+        728
+      ],
+      "valid": true,
+      "boundary_mae_px": 2.0,
+      "within_3px": true,
+      "geometry_ms": 13.64,
+      "ocr_values": {
+        "x_min": null,
+        "x_max": null,
+        "y_min": 0.8,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": null,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "06_clean.png",
+    "seed": 9102032,
+    "style": "clean",
+    "plot_box": [
+      176,
+      70,
+      706,
+      462
+    ],
+    "size": [
+      862,
+      604
+    ],
+    "after": {
+      "pred": [
+        176,
+        70,
+        706,
+        462
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 46.45,
+      "ocr_values": {
+        "x_min": 9.97486601147964,
+        "x_max": 80.02513398852037,
+        "y_min": 11.065176500454982,
+        "y_max": 9998.284904854781
+      },
+      "ocr_max_relative_error": 0.0011065176500454981,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        177,
+        71,
+        705,
+        461
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.0,
+      "within_3px": true,
+      "geometry_ms": 8.47,
+      "ocr_values": {
+        "x_min": 10.0,
+        "x_max": 80.0,
+        "y_min": 2.0,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": 0.999,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "07_open.png",
+    "seed": 9102033,
+    "style": "open",
+    "plot_box": [
+      210,
+      123,
+      994,
+      764
+    ],
+    "size": [
+      1095,
+      966
+    ],
+    "after": {
+      "pred": [
+        210,
+        123,
+        994,
+        764
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 94.31,
+      "ocr_values": {
+        "x_min": 9.970258073778606,
+        "x_max": 80.02974192622139,
+        "y_min": 4.687465828155837,
+        "y_max": 9996.875022781225
+      },
+      "ocr_max_relative_error": 0.0004687465828155837,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        212,
+        483,
+        547,
+        763
+      ],
+      "valid": true,
+      "boundary_mae_px": 202.5,
+      "within_3px": false,
+      "geometry_ms": 18.86,
+      "ocr_values": {
+        "x_min": null,
+        "x_max": null,
+        "y_min": 2.0,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": null,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "08_grid.png",
+    "seed": 9102034,
+    "style": "grid",
+    "plot_box": [
+      154,
+      69,
+      712,
+      465
+    ],
+    "size": [
+      828,
+      608
+    ],
+    "after": {
+      "pred": [
+        154,
+        69,
+        712,
+        465
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 44.51,
+      "ocr_values": {
+        "x_min": 9.958191272780784,
+        "x_max": 80.0418087272192,
+        "y_min": 10.972347916376748,
+        "y_max": 9998.28965655668
+      },
+      "ocr_max_relative_error": 0.0010972347916376748,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        378,
+        228,
+        487,
+        305
+      ],
+      "valid": true,
+      "boundary_mae_px": 192.0,
+      "within_3px": false,
+      "geometry_ms": 3.72,
+      "ocr_values": {
+        "x_min": null,
+        "x_max": null,
+        "y_min": 10.0,
+        "y_max": 10000.0
+      },
+      "ocr_max_relative_error": null,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "09_dark.png",
+    "seed": 9102035,
+    "style": "dark",
+    "plot_box": [
+      160,
+      113,
+      821,
+      598
+    ],
+    "size": [
+      923,
+      716
+    ],
+    "after": {
+      "pred": [
+        160,
+        113,
+        821,
+        598
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 62.23,
+      "ocr_values": {
+        "x_min": 9.995024373917627,
+        "x_max": 80.00497562608234,
+        "y_min": 0.0,
+        "y_max": 10000.00000000001
+      },
+      "ocr_max_relative_error": 7.108037260533503e-05,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        161,
+        114,
+        820,
+        597
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.0,
+      "within_3px": true,
+      "geometry_ms": 12.0,
+      "ocr_values": {
+        "x_min": 3.0,
+        "x_max": 92.0,
+        "y_min": 2.0,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": 0.999,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "10_blur.png",
+    "seed": 9102036,
+    "style": "blur",
+    "plot_box": [
+      185,
+      153,
+      1002,
+      703
+    ],
+    "size": [
+      1095,
+      865
+    ],
+    "after": {
+      "pred": [
+        185,
+        153,
+        1002,
+        703
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 84.45,
+      "ocr_values": {
+        "x_min": 9.982498964298822,
+        "x_max": 80.01188431429293,
+        "y_min": -1.8189894035458565e-12,
+        "y_max": 9999.999999999996
+      },
+      "ocr_max_relative_error": 0.0002500147957311175,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        187,
+        155,
+        1000,
+        672
+      ],
+      "valid": true,
+      "boundary_mae_px": 9.25,
+      "within_3px": false,
+      "geometry_ms": 14.07,
+      "ocr_values": {
+        "x_min": 10.0,
+        "x_max": 80.0,
+        "y_min": 2.0,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": 0.999,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "11_noise.png",
+    "seed": 9102037,
+    "style": "noise",
+    "plot_box": [
+      189,
+      128,
+      764,
+      584
+    ],
+    "size": [
+      898,
+      737
+    ],
+    "after": {
+      "pred": [
+        190,
+        128,
+        764,
+        584
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.25,
+      "within_3px": true,
+      "geometry_ms": 60.06,
+      "ocr_values": {
+        "x_min": 10.099605811311962,
+        "x_max": 80.0154318428244,
+        "y_min": 6.593311675540463,
+        "y_max": 9995.604458882974
+      },
+      "ocr_max_relative_error": 0.001422940161599457,
+      "ocr_within_1pct": true
+    },
+    "before": {
+      "pred": [
+        191,
+        130,
+        763,
+        583
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.5,
+      "within_3px": true,
+      "geometry_ms": 10.62,
+      "ocr_values": {
+        "x_min": 2.0,
+        "x_max": 10.0,
+        "y_min": 2.0,
+        "y_max": 10.0
+      },
+      "ocr_max_relative_error": 1.0,
+      "ocr_within_1pct": false
+    }
+  },
+  {
+    "case": "12_clean.png",
+    "seed": 9102038,
+    "style": "clean",
+    "plot_box": [
+      246,
+      92,
+      1100,
+      440
+    ],
+    "size": [
+      1370,
+      585
+    ],
+    "after": {
+      "pred": [
+        246,
+        92,
+        1100,
+        440
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 68.57
+    },
+    "before": {
+      "pred": [
+        248,
+        94,
+        1098,
+        438
+      ],
+      "valid": true,
+      "boundary_mae_px": 2.0,
+      "within_3px": true,
+      "geometry_ms": 11.29
+    }
+  },
+  {
+    "case": "13_open.png",
+    "seed": 9102039,
+    "style": "open",
+    "plot_box": [
+      141,
+      87,
+      811,
+      543
+    ],
+    "size": [
+      913,
+      677
+    ],
+    "after": {
+      "pred": [
+        141,
+        87,
+        811,
+        543
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 51.45
+    },
+    "before": {
+      "pred": [
+        143,
+        338,
+        456,
+        541
+      ],
+      "valid": true,
+      "boundary_mae_px": 152.5,
+      "within_3px": false,
+      "geometry_ms": 11.24
+    }
+  },
+  {
+    "case": "14_grid.png",
+    "seed": 9102040,
+    "style": "grid",
+    "plot_box": [
+      237,
+      85,
+      1055,
+      595
+    ],
+    "size": [
+      1265,
+      756
+    ],
+    "after": {
+      "pred": [
+        237,
+        85,
+        1055,
+        595
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 82.92
+    },
+    "before": {
+      "pred": [
+        565,
+        290,
+        726,
+        390
+      ],
+      "valid": true,
+      "boundary_mae_px": 266.75,
+      "within_3px": false,
+      "geometry_ms": 5.09
+    }
+  },
+  {
+    "case": "15_dark.png",
+    "seed": 9102041,
+    "style": "dark",
+    "plot_box": [
+      282,
+      46,
+      1174,
+      438
+    ],
+    "size": [
+      1327,
+      543
+    ],
+    "after": {
+      "pred": [
+        282,
+        46,
+        1174,
+        438
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 57.44
+    },
+    "before": {
+      "pred": [
+        284,
+        48,
+        1173,
+        418
+      ],
+      "valid": true,
+      "boundary_mae_px": 6.25,
+      "within_3px": false,
+      "geometry_ms": 11.81
+    }
+  },
+  {
+    "case": "16_blur.png",
+    "seed": 9102042,
+    "style": "blur",
+    "plot_box": [
+      248,
+      91,
+      1111,
+      483
+    ],
+    "size": [
+      1222,
+      590
+    ],
+    "after": {
+      "pred": [
+        248,
+        92,
+        1112,
+        484
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.75,
+      "within_3px": true,
+      "geometry_ms": 59.51
+    },
+    "before": {
+      "pred": [
+        251,
+        94,
+        1109,
+        460
+      ],
+      "valid": true,
+      "boundary_mae_px": 7.75,
+      "within_3px": false,
+      "geometry_ms": 11.83
+    }
+  },
+  {
+    "case": "17_noise.png",
+    "seed": 9102043,
+    "style": "noise",
+    "plot_box": [
+      216,
+      75,
+      940,
+      695
+    ],
+    "size": [
+      1089,
+      839
+    ],
+    "after": {
+      "pred": [
+        216,
+        75,
+        940,
+        695
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 72.53
+    },
+    "before": {
+      "pred": [
+        218,
+        77,
+        938,
+        670
+      ],
+      "valid": true,
+      "boundary_mae_px": 7.75,
+      "within_3px": false,
+      "geometry_ms": 12.74
+    }
+  },
+  {
+    "case": "18_clean.png",
+    "seed": 9102044,
+    "style": "clean",
+    "plot_box": [
+      316,
+      51,
+      1361,
+      529
+    ],
+    "size": [
+      1462,
+      642
+    ],
+    "after": {
+      "pred": [
+        316,
+        52,
+        1362,
+        530
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.75,
+      "within_3px": true,
+      "geometry_ms": 78.8
+    },
+    "before": {
+      "pred": [
+        559,
+        53,
+        733,
+        501
+      ],
+      "valid": true,
+      "boundary_mae_px": 225.25,
+      "within_3px": false,
+      "geometry_ms": 7.08
+    }
+  },
+  {
+    "case": "19_open.png",
+    "seed": 9102045,
+    "style": "open",
+    "plot_box": [
+      223,
+      84,
+      1134,
+      588
+    ],
+    "size": [
+      1219,
+      774
+    ],
+    "after": {
+      "pred": [
+        224,
+        84,
+        1134,
+        588
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.25,
+      "within_3px": true,
+      "geometry_ms": 76.16
+    },
+    "before": {
+      "pred": [
+        225,
+        387,
+        609,
+        563
+      ],
+      "valid": true,
+      "boundary_mae_px": 213.75,
+      "within_3px": false,
+      "geometry_ms": 14.27
+    }
+  },
+  {
+    "case": "20_grid.png",
+    "seed": 9102046,
+    "style": "grid",
+    "plot_box": [
+      151,
+      134,
+      910,
+      650
+    ],
+    "size": [
+      992,
+      820
+    ],
+    "after": {
+      "pred": [
+        151,
+        134,
+        910,
+        650
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 65.85
+    },
+    "before": {
+      "pred": [
+        455,
+        341,
+        605,
+        442
+      ],
+      "valid": true,
+      "boundary_mae_px": 256.0,
+      "within_3px": false,
+      "geometry_ms": 4.75
+    }
+  },
+  {
+    "case": "21_dark.png",
+    "seed": 9102047,
+    "style": "dark",
+    "plot_box": [
+      176,
+      58,
+      1038,
+      428
+    ],
+    "size": [
+      1128,
+      538
+    ],
+    "after": {
+      "pred": [
+        176,
+        58,
+        1038,
+        428
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 49.2
+    },
+    "before": {
+      "pred": [
+        177,
+        59,
+        1037,
+        405
+      ],
+      "valid": true,
+      "boundary_mae_px": 6.5,
+      "within_3px": false,
+      "geometry_ms": 10.31
+    }
+  },
+  {
+    "case": "22_blur.png",
+    "seed": 9102048,
+    "style": "blur",
+    "plot_box": [
+      213,
+      133,
+      972,
+      620
+    ],
+    "size": [
+      1122,
+      759
+    ],
+    "after": {
+      "pred": [
+        213,
+        133,
+        972,
+        620
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 69.63
+    },
+    "before": {
+      "pred": [
+        216,
+        136,
+        969,
+        617
+      ],
+      "valid": true,
+      "boundary_mae_px": 3.0,
+      "within_3px": true,
+      "geometry_ms": 12.04
+    }
+  },
+  {
+    "case": "23_noise.png",
+    "seed": 9102049,
+    "style": "noise",
+    "plot_box": [
+      214,
+      135,
+      1032,
+      714
+    ],
+    "size": [
+      1174,
+      846
+    ],
+    "after": {
+      "pred": [
+        214,
+        135,
+        1032,
+        714
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 87.92
+    },
+    "before": {
+      "pred": [
+        216,
+        137,
+        1030,
+        675
+      ],
+      "valid": true,
+      "boundary_mae_px": 11.25,
+      "within_3px": false,
+      "geometry_ms": 13.29
+    }
+  },
+  {
+    "case": "24_clean.png",
+    "seed": 9102050,
+    "style": "clean",
+    "plot_box": [
+      170,
+      127,
+      886,
+      791
+    ],
+    "size": [
+      990,
+      961
+    ],
+    "after": {
+      "pred": [
+        170,
+        127,
+        886,
+        791
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 79.95
+    },
+    "before": {
+      "pred": [
+        172,
+        129,
+        884,
+        789
+      ],
+      "valid": true,
+      "boundary_mae_px": 2.0,
+      "within_3px": true,
+      "geometry_ms": 13.95
+    }
+  },
+  {
+    "case": "25_open.png",
+    "seed": 9102051,
+    "style": "open",
+    "plot_box": [
+      159,
+      93,
+      809,
+      418
+    ],
+    "size": [
+      944,
+      521
+    ],
+    "after": {
+      "pred": [
+        160,
+        93,
+        809,
+        418
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.25,
+      "within_3px": true,
+      "geometry_ms": 42.89
+    },
+    "before": {
+      "pred": [
+        161,
+        260,
+        472,
+        417
+      ],
+      "valid": true,
+      "boundary_mae_px": 126.75,
+      "within_3px": false,
+      "geometry_ms": 10.77
+    }
+  },
+  {
+    "case": "26_grid.png",
+    "seed": 9102052,
+    "style": "grid",
+    "plot_box": [
+      138,
+      78,
+      644,
+      525
+    ],
+    "size": [
+      737,
+      638
+    ],
+    "after": {
+      "pred": [
+        138,
+        78,
+        644,
+        526
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.25,
+      "within_3px": true,
+      "geometry_ms": 39.55
+    },
+    "before": {
+      "pred": [
+        341,
+        257,
+        375,
+        345
+      ],
+      "valid": true,
+      "boundary_mae_px": 207.75,
+      "within_3px": false,
+      "geometry_ms": 2.61
+    }
+  },
+  {
+    "case": "27_dark.png",
+    "seed": 9102053,
+    "style": "dark",
+    "plot_box": [
+      207,
+      106,
+      868,
+      523
+    ],
+    "size": [
+      991,
+      628
+    ],
+    "after": {
+      "pred": [
+        207,
+        106,
+        868,
+        523
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 50.77
+    },
+    "before": {
+      "pred": [
+        208,
+        107,
+        867,
+        522
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.0,
+      "within_3px": true,
+      "geometry_ms": 9.52
+    }
+  },
+  {
+    "case": "28_blur.png",
+    "seed": 9102054,
+    "style": "blur",
+    "plot_box": [
+      155,
+      113,
+      879,
+      682
+    ],
+    "size": [
+      964,
+      888
+    ],
+    "after": {
+      "pred": [
+        156,
+        114,
+        880,
+        682
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.75,
+      "within_3px": true,
+      "geometry_ms": 72.74
+    },
+    "before": {
+      "pred": [
+        158,
+        116,
+        877,
+        654
+      ],
+      "valid": true,
+      "boundary_mae_px": 9.0,
+      "within_3px": false,
+      "geometry_ms": 12.13
+    }
+  },
+  {
+    "case": "29_noise.png",
+    "seed": 9102055,
+    "style": "noise",
+    "plot_box": [
+      150,
+      87,
+      928,
+      684
+    ],
+    "size": [
+      1011,
+      836
+    ],
+    "after": {
+      "pred": [
+        150,
+        87,
+        928,
+        684
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 68.91
+    },
+    "before": {
+      "pred": [
+        151,
+        88,
+        927,
+        659
+      ],
+      "valid": true,
+      "boundary_mae_px": 7.0,
+      "within_3px": false,
+      "geometry_ms": 11.93
+    }
+  },
+  {
+    "case": "30_clean.png",
+    "seed": 9102056,
+    "style": "clean",
+    "plot_box": [
+      198,
+      47,
+      1201,
+      436
+    ],
+    "size": [
+      1349,
+      527
+    ],
+    "after": {
+      "pred": [
+        198,
+        47,
+        1201,
+        436
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 57.76
+    },
+    "before": {
+      "pred": [
+        200,
+        49,
+        1199,
+        419
+      ],
+      "valid": true,
+      "boundary_mae_px": 5.75,
+      "within_3px": false,
+      "geometry_ms": 11.92
+    }
+  },
+  {
+    "case": "31_open.png",
+    "seed": 9102057,
+    "style": "open",
+    "plot_box": [
+      285,
+      109,
+      1210,
+      598
+    ],
+    "size": [
+      1406,
+      774
+    ],
+    "after": {
+      "pred": [
+        285,
+        109,
+        1210,
+        598
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 92.95
+    },
+    "before": {
+      "pred": [
+        287,
+        387,
+        703,
+        596
+      ],
+      "valid": true,
+      "boundary_mae_px": 197.25,
+      "within_3px": false,
+      "geometry_ms": 16.61
+    }
+  },
+  {
+    "case": "32_grid.png",
+    "seed": 9102058,
+    "style": "grid",
+    "plot_box": [
+      265,
+      147,
+      1178,
+      801
+    ],
+    "size": [
+      1271,
+      982
+    ],
+    "after": {
+      "pred": [
+        266,
+        148,
+        1178,
+        802
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.75,
+      "within_3px": true,
+      "geometry_ms": 107.52
+    },
+    "before": {
+      "pred": [
+        631,
+        409,
+        811,
+        538
+      ],
+      "valid": true,
+      "boundary_mae_px": 314.5,
+      "within_3px": false,
+      "geometry_ms": 6.31
+    }
+  },
+  {
+    "case": "33_dark.png",
+    "seed": 9102059,
+    "style": "dark",
+    "plot_box": [
+      284,
+      118,
+      1111,
+      654
+    ],
+    "size": [
+      1309,
+      836
+    ],
+    "after": {
+      "pred": [
+        284,
+        118,
+        1112,
+        654
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.25,
+      "within_3px": true,
+      "geometry_ms": 86.45
+    },
+    "before": {
+      "pred": [
+        286,
+        120,
+        1110,
+        653
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.5,
+      "within_3px": true,
+      "geometry_ms": 13.42
+    }
+  },
+  {
+    "case": "34_blur.png",
+    "seed": 9102060,
+    "style": "blur",
+    "plot_box": [
+      174,
+      85,
+      911,
+      770
+    ],
+    "size": [
+      1062,
+      969
+    ],
+    "after": {
+      "pred": [
+        174,
+        86,
+        912,
+        770
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.5,
+      "within_3px": true,
+      "geometry_ms": 82.36
+    },
+    "before": {
+      "pred": [
+        310,
+        88,
+        909,
+        768
+      ],
+      "valid": true,
+      "boundary_mae_px": 35.75,
+      "within_3px": false,
+      "geometry_ms": 12.85
+    }
+  },
+  {
+    "case": "35_noise.png",
+    "seed": 9102061,
+    "style": "noise",
+    "plot_box": [
+      139,
+      72,
+      895,
+      440
+    ],
+    "size": [
+      1063,
+      559
+    ],
+    "after": {
+      "pred": [
+        140,
+        72,
+        896,
+        440
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.5,
+      "within_3px": true,
+      "geometry_ms": 53.37
+    },
+    "before": {
+      "pred": [
+        141,
+        74,
+        894,
+        439
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.5,
+      "within_3px": true,
+      "geometry_ms": 9.56
+    }
+  },
+  {
+    "case": "36_clean.png",
+    "seed": 9102062,
+    "style": "clean",
+    "plot_box": [
+      153,
+      87,
+      641,
+      667
+    ],
+    "size": [
+      713,
+      863
+    ],
+    "after": {
+      "pred": [
+        154,
+        88,
+        642,
+        668
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.0,
+      "within_3px": true,
+      "geometry_ms": 49.57
+    },
+    "before": {
+      "pred": [
+        155,
+        89,
+        640,
+        666
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.5,
+      "within_3px": true,
+      "geometry_ms": 9.13
+    }
+  },
+  {
+    "case": "37_open.png",
+    "seed": 9102063,
+    "style": "open",
+    "plot_box": [
+      244,
+      88,
+      1112,
+      425
+    ],
+    "size": [
+      1286,
+      560
+    ],
+    "after": {
+      "pred": [
+        244,
+        88,
+        1112,
+        426
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.25,
+      "within_3px": true,
+      "geometry_ms": 58.69
+    },
+    "before": {
+      "pred": [
+        246,
+        280,
+        643,
+        424
+      ],
+      "valid": true,
+      "boundary_mae_px": 166.0,
+      "within_3px": false,
+      "geometry_ms": 12.49
+    }
+  },
+  {
+    "case": "38_grid.png",
+    "seed": 9102064,
+    "style": "grid",
+    "plot_box": [
+      130,
+      77,
+      618,
+      572
+    ],
+    "size": [
+      705,
+      712
+    ],
+    "after": {
+      "pred": [
+        130,
+        77,
+        618,
+        572
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 41.11
+    },
+    "before": {
+      "pred": [
+        326,
+        276,
+        421,
+        373
+      ],
+      "valid": true,
+      "boundary_mae_px": 197.75,
+      "within_3px": false,
+      "geometry_ms": 3.24
+    }
+  },
+  {
+    "case": "39_dark.png",
+    "seed": 9102065,
+    "style": "dark",
+    "plot_box": [
+      224,
+      57,
+      1236,
+      454
+    ],
+    "size": [
+      1383,
+      606
+    ],
+    "after": {
+      "pred": [
+        224,
+        57,
+        1236,
+        454
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 62.79
+    },
+    "before": {
+      "pred": [
+        225,
+        58,
+        1235,
+        437
+      ],
+      "valid": true,
+      "boundary_mae_px": 5.0,
+      "within_3px": false,
+      "geometry_ms": 12.62
+    }
+  },
+  {
+    "case": "40_blur.png",
+    "seed": 9102066,
+    "style": "blur",
+    "plot_box": [
+      199,
+      102,
+      888,
+      452
+    ],
+    "size": [
+      1016,
+      590
+    ],
+    "after": {
+      "pred": [
+        200,
+        102,
+        888,
+        452
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.25,
+      "within_3px": true,
+      "geometry_ms": 47.59
+    },
+    "before": {
+      "pred": [
+        202,
+        105,
+        562,
+        450
+      ],
+      "valid": true,
+      "boundary_mae_px": 83.5,
+      "within_3px": false,
+      "geometry_ms": 6.99
+    }
+  },
+  {
+    "case": "41_noise.png",
+    "seed": 9102067,
+    "style": "noise",
+    "plot_box": [
+      174,
+      99,
+      998,
+      732
+    ],
+    "size": [
+      1235,
+      901
+    ],
+    "after": {
+      "pred": [
+        174,
+        99,
+        998,
+        732
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 98.09
+    },
+    "before": {
+      "pred": [
+        176,
+        101,
+        996,
+        730
+      ],
+      "valid": true,
+      "boundary_mae_px": 2.0,
+      "within_3px": true,
+      "geometry_ms": 14.19
+    }
+  },
+  {
+    "case": "42_clean.png",
+    "seed": 9102068,
+    "style": "clean",
+    "plot_box": [
+      201,
+      88,
+      1008,
+      625
+    ],
+    "size": [
+      1101,
+      803
+    ],
+    "after": {
+      "pred": [
+        202,
+        88,
+        1008,
+        626
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.5,
+      "within_3px": true,
+      "geometry_ms": 71.5
+    },
+    "before": {
+      "pred": [
+        203,
+        90,
+        1007,
+        595
+      ],
+      "valid": true,
+      "boundary_mae_px": 8.75,
+      "within_3px": false,
+      "geometry_ms": 12.18
+    }
+  },
+  {
+    "case": "43_open.png",
+    "seed": 9102069,
+    "style": "open",
+    "plot_box": [
+      226,
+      94,
+      1220,
+      481
+    ],
+    "size": [
+      1458,
+      632
+    ],
+    "after": {
+      "pred": [
+        226,
+        94,
+        1220,
+        481
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 72.82
+    },
+    "before": {
+      "pred": [
+        228,
+        316,
+        729,
+        460
+      ],
+      "valid": true,
+      "boundary_mae_px": 184.0,
+      "within_3px": false,
+      "geometry_ms": 14.63
+    }
+  },
+  {
+    "case": "44_grid.png",
+    "seed": 9102070,
+    "style": "grid",
+    "plot_box": [
+      179,
+      142,
+      987,
+      761
+    ],
+    "size": [
+      1179,
+      979
+    ],
+    "after": {
+      "pred": [
+        179,
+        142,
+        987,
+        761
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 93.29
+    },
+    "before": {
+      "pred": [
+        503,
+        390,
+        662,
+        512
+      ],
+      "valid": true,
+      "boundary_mae_px": 286.5,
+      "within_3px": false,
+      "geometry_ms": 5.96
+    }
+  },
+  {
+    "case": "45_dark.png",
+    "seed": 9102071,
+    "style": "dark",
+    "plot_box": [
+      274,
+      99,
+      1246,
+      574
+    ],
+    "size": [
+      1478,
+      706
+    ],
+    "after": {
+      "pred": [
+        274,
+        99,
+        1246,
+        574
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 83.46
+    },
+    "before": {
+      "pred": [
+        276,
+        101,
+        1244,
+        552
+      ],
+      "valid": true,
+      "boundary_mae_px": 7.0,
+      "within_3px": false,
+      "geometry_ms": 14.04
+    }
+  },
+  {
+    "case": "46_blur.png",
+    "seed": 9102072,
+    "style": "blur",
+    "plot_box": [
+      154,
+      55,
+      787,
+      453
+    ],
+    "size": [
+      870,
+      561
+    ],
+    "after": {
+      "pred": [
+        154,
+        55,
+        787,
+        453
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 39.61
+    },
+    "before": {
+      "pred": [
+        431,
+        58,
+        784,
+        450
+      ],
+      "valid": true,
+      "boundary_mae_px": 71.5,
+      "within_3px": false,
+      "geometry_ms": 6.46
+    }
+  },
+  {
+    "case": "47_noise.png",
+    "seed": 9102073,
+    "style": "noise",
+    "plot_box": [
+      189,
+      125,
+      885,
+      715
+    ],
+    "size": [
+      1031,
+      914
+    ],
+    "after": {
+      "pred": [
+        189,
+        125,
+        885,
+        715
+      ],
+      "valid": true,
+      "boundary_mae_px": 0.0,
+      "within_3px": true,
+      "geometry_ms": 91.8
+    },
+    "before": {
+      "pred": [
+        190,
+        126,
+        884,
+        714
+      ],
+      "valid": true,
+      "boundary_mae_px": 1.0,
+      "within_3px": true,
+      "geometry_ms": 23.1
+    }
+  }
+]
