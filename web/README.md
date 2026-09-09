@@ -54,13 +54,17 @@ npm run start:server               # Express가 build를 정적 서빙
 ```env
 PORT=5000
 
-# (선택) 디지타이저 Python 경로 — 콜드 venv보다 워밍업된 레포 루트 venv가 ~14× 빠릅니다
+# (선택) 사용할 Python 소스와 의존성이 설치된 인터프리터
 XRD_DIGITIZER_PATH=/absolute/path/to/xrd_digitizer
 XRD_DIGITIZER_PYTHON=/absolute/path/to/xrd_digitizer/.venv/bin/python3
 ```
 
-값을 비워두면 `web/server/analysis/python/xrd_digitizer/.venv` 를 사용합니다 (자동 검색).
+소스 경로를 비우면 `web/server/analysis/python/xrd_digitizer`를 사용합니다. Python은 해당 소스의 `.venv/bin/python3`(Windows: `.venv/Scripts/python.exe`)를 찾고, 없으면 시스템 Python을 사용합니다. 루트에 설치한 환경을 쓰려면 `XRD_DIGITIZER_PYTHON`을 지정하세요.
 샘플은 [`server/.env.example`](server/.env.example) 참고.
+
+기본 엔진은 `runner.run_simple`이며 최신 색상·저대비 개선이 번들에도 포함됩니다. `XRD_USE_CLASSIC=true`는 DP 엔진, `XRD_USE_ML=true`는 별도 가중치가 필요한 ML 엔진을 선택합니다.
+
+자동 ROI 감지를 쓰려면 해당 Python 환경에 `opencv-python`을 설치하세요. OCR에는 `pytesseract` 패키지와 시스템 Tesseract 설치가 추가로 필요합니다. 수동 축 보정만 사용할 때는 선택 사항입니다.
 
 ## 🔌 API Endpoints
 
@@ -91,7 +95,7 @@ XRD_DIGITIZER_PYTHON=/absolute/path/to/xrd_digitizer/.venv/bin/python3
 
 ## 📸 Screenshots
 
-> 실제 화면 캡처는 [`../docs/screenshots/`](../docs/screenshots/) 에 추가해주세요.
+현재 UI의 실제 화면 캡처입니다.
 
 | Digitizer | Analyzer |
 |:---:|:---:|

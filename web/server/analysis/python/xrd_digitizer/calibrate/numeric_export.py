@@ -59,10 +59,16 @@ def resample_two_theta_uniform(
         half = 0.5 * span / float(n_target - 1)
         lo_b = np.maximum(float(x_lo), xs - half)
         hi_b = np.minimum(float(x_hi), xs + half)
-        for i in range(n_target):
-            m = (tt >= lo_b[i]) & (tt <= hi_b[i])
-            if np.any(m):
-                yi[i] = max(float(yi[i]), float(np.max(yy[m])))
+        # Sorted source coordinates make each window a contiguous slice.
+        # Reduce all nonempty slices at once instead of allocating an N-source
+        # boolean mask for every output point (up to 20,000 masks).
+        left = np.searchsorted(tt, lo_b, side="left")
+        right = np.searchsorted(tt, hi_b, side="right")
+        nonempty = right > left
+        bounds = np.column_stack((left[nonempty], right[nonempty])).ravel()
+        if bounds.size:
+            maxima = np.maximum.reduceat(np.append(yy, -np.inf), bounds)[::2]
+            yi[nonempty] = np.maximum(yi[nonempty], maxima)
     out_tt = [round(float(x), 6) for x in xs]
     out_y = [round(float(y), 6) for y in yi]
     return out_tt, out_y

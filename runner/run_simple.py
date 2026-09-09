@@ -70,6 +70,7 @@ def run_simple_pipeline(
     curvature_blend_strength: float = 0.32,
     loose_peak_prominence_factor: Optional[float] = None,
     smooth: bool = False,
+    trace_method: str = 'topmost',
 ) -> RunResult:
     stage_timings: dict = {}
     warnings_list: list[str] = []
@@ -107,7 +108,7 @@ def run_simple_pipeline(
 
     # Simple pixel trace
     t0 = time.perf_counter()
-    trace_path = extract_curve_simple(roi_arr, curve_rgb, max_dist=eff_max_dist)
+    trace_path = extract_curve_simple(roi_arr, curve_rgb, max_dist=eff_max_dist, method=trace_method)
     stage_timings['simple_trace'] = round(time.perf_counter() - t0, 6)
 
     # postprocess: gap_fill / smoothing / peaks
@@ -185,6 +186,7 @@ def run_simple_pipeline(
         peaks_numeric_curve=numeric.get('peaks_numeric_curve', []),
         model_assist={
             'source': 'simple_pixel_trace',
+            'trace_method': trace_method,
             'pipeline_version': f'simple_{pipeline_version}',
             'stage_timings': stage_timings,
             'roi_shape': [int(roi_h), int(roi_w)],
@@ -215,6 +217,8 @@ def main() -> None:
     p.add_argument('--color-max-dist',     type=float, default=-1.0,
                    help='>0 이면 고정값 사용; <=0 이면 bg↔curve 거리의 60% 적응형 (기본)')
     p.add_argument('--smooth', action='store_true', help='SG smoothing 활성화 (기본 off — sharp peak 보존)')
+    p.add_argument('--trace-method', choices=['centerline', 'topmost', 'centroid', 'argmin'],
+                   default='topmost', help='Curve location rule (default: topmost; centerline is an optional fidelity/peak-recall tradeoff)')
     p.add_argument('--stdout', action='store_true')
     p.add_argument('--no-debug', action='store_true', dest='no_debug')
     args = p.parse_args()
@@ -229,6 +233,7 @@ def main() -> None:
         image, mi,
         color_max_dist=float(args.color_max_dist),
         smooth=bool(args.smooth),
+        trace_method=args.trace_method,
     )
 
     print(f'[DONE] confidence={result.confidence}, peaks={len(result.peaks_numeric_curve)}, warnings={len(result.warnings)}',

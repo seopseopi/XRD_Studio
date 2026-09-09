@@ -1,0 +1,7 @@
+{
+  "source_patterns": 100,
+  "development_patterns": 21,
+  "validation_patterns": 79,
+  "identical_numeric_arrays_across_splits": [],
+  "note": "Pattern-ID split, not institution/family split; validation set used for release decisions."
+}

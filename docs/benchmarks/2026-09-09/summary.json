@@ -1,0 +1,133 @@
+{
+  "baseline_revision": "2736a85e5dfca92ef5cba00eb986f46b60eff1e1",
+  "environment": {
+    "python": "3.9.6",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "numpy": "2.0.2"
+  },
+  "protocol": "In-process inference, preloaded RGB image, median of repeats; excludes imports, image I/O and HTTP. MAE on full GT x-grid with endpoint interpolation / GT range. Peaks: 5% GT-range prominence, one-to-one matching within 0.2 degrees. GT never passed to inference.",
+  "before": {
+    "all": {
+      "n": 237,
+      "mae_norm_mean": 0.08213539052724775,
+      "range_ratio_mean": 0.9107474817118526,
+      "seconds_median_mean": 0.023901647008438883,
+      "peak_precision_mean": 0.8911134520921872,
+      "peak_recall_mean": 0.6063817164352033
+    },
+    "clean": {
+      "n": 79,
+      "mae_norm_mean": 0.01573944637370487,
+      "range_ratio_mean": 0.944007618117634,
+      "seconds_median_mean": 0.023942264848101295,
+      "peak_precision_mean": 0.9822478857288983,
+      "peak_recall_mean": 0.6376701923465314
+    },
+    "real_like": {
+      "n": 79,
+      "mae_norm_mean": 0.21088652755564194,
+      "range_ratio_mean": 0.8399833348673948,
+      "seconds_median_mean": 0.02392271465822793,
+      "peak_precision_mean": 0.7494122475989176,
+      "peak_recall_mean": 0.5616547047980265
+    },
+    "styled": {
+      "n": 79,
+      "mae_norm_mean": 0.019780197652396515,
+      "range_ratio_mean": 0.9482514921505287,
+      "seconds_median_mean": 0.023839961518987422,
+      "peak_precision_mean": 0.9380928506830932,
+      "peak_recall_mean": 0.6198202521610524
+    }
+  },
+  "after": {
+    "all": {
+      "n": 237,
+      "mae_norm_mean": 0.013610808638285328,
+      "range_ratio_mean": 0.8440033854704635,
+      "seconds_median_mean": 0.011875789548523138,
+      "peak_precision_mean": 0.9993972272453285,
+      "peak_recall_mean": 0.6257159065415722
+    },
+    "clean": {
+      "n": 79,
+      "mae_norm_mean": 0.013553820889614264,
+      "range_ratio_mean": 0.8420505724170769,
+      "seconds_median_mean": 0.010628863392404965,
+      "peak_precision_mean": 1.0,
+      "peak_recall_mean": 0.6261090306019457
+    },
+    "real_like": {
+      "n": 79,
+      "mae_norm_mean": 0.013800861677283937,
+      "range_ratio_mean": 0.8446835066105766,
+      "seconds_median_mean": 0.010622401898734115,
+      "peak_precision_mean": 0.9981916817359856,
+      "peak_recall_mean": 0.6231790377299296
+    },
+    "styled": {
+      "n": 79,
+      "mae_norm_mean": 0.013477743347957784,
+      "range_ratio_mean": 0.8452760773837367,
+      "seconds_median_mean": 0.014376103354430332,
+      "peak_precision_mean": 1.0,
+      "peak_recall_mean": 0.6278596512928412
+    }
+  },
+  "mae_improved_cases": 237,
+  "mae_regressed_cases": 0,
+  "resample_seconds": {
+    "before": [
+      0.1908265,
+      0.10123308299999989,
+      0.09981695899999998,
+      0.10940508299999996,
+      0.10896362500000012,
+      0.14542900000000003,
+      0.1125416669999999,
+      0.09393841700000016,
+      0.10515162499999997,
+      0.11371095799999997
+    ],
+    "after": [
+      0.018160374999999895,
+      0.01704504200000012,
+      0.01644833400000012,
+      0.01672445899999997,
+      0.014509375000000047,
+      0.01470758300000008,
+      0.014333957999999702,
+      0.014348500000000097,
+      0.014534250000000082,
+      0.014362374999999705
+    ]
+  },
+  "cold_cli_seconds": {
+    "before": [
+      1.7521576249999988,
+      1.4413820410000007,
+      1.4606222500000001,
+      1.473235958,
+      1.4536650000000009,
+      1.445443166000004,
+      1.4806864999999974
+    ],
+    "after": [
+      0.766761332999998,
+      0.7552999159999985,
+      0.744790708,
+      0.7544802500000003,
+      0.7416256250000046,
+      0.7475684579999964,
+      0.7458650419999984
+    ]
+  },
+  "code_sha256": {
+    "preprocess/simple_trace.py": "fb19a12eb9365ab3040b6009627f0499247f7cd8d9030ccb0d9241106118872d",
+    "runner/run_simple.py": "ab2ffc7f102dde6440b02f30ee8c19620b805328ced926b3fa88e4e61ab2d252",
+    "calibrate/axis_mapping.py": "19995b94ab658967f13805e620a402f51f4be575d4eea438c63886236ebb980f",
+    "calibrate/numeric_export.py": "db8366bd28e3c089630e3126fa359c67e9d61a2985241e2db86da929b1d7f5ca",
+    "eval/benchmark.py": "73c621524ba9d5fca674e924ea7c7cad59d5f38393992af573dbeb3cf646cda4",
+    "eval/render_benchmark.py": "6225ee55fd66e3133eb45e89f44a6bd0fb11c7b3ffc1f9220c977029129ef7f7"
+  }
+}

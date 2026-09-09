@@ -3,7 +3,6 @@ pandas
 Pillow
 scipy
 scikit-image   # skeletonize (thinning, morphology); fallback erosion used if missing
-scikit-learn   # LinearRegression for axis calibration (pixel -> physical value mapping)
 
 # Dev / testing
 pytest
