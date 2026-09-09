@@ -4,7 +4,7 @@
 
 논문 속 **XRD 그래프를 수치 데이터로.** 이미지 업로드부터 피크 분석까지, 하나의 작업 공간에서.
 
-[![Tests](https://github.com/seopseopi/xrd_digitizer/actions/workflows/tests.yml/badge.svg)](https://github.com/seopseopi/xrd_digitizer/actions/workflows/tests.yml)
+[![Tests](https://github.com/seopseopi/XRD_Studio/actions/workflows/tests.yml/badge.svg)](https://github.com/seopseopi/XRD_Studio/actions/workflows/tests.yml)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)](requirements.txt)
 [![React](https://img.shields.io/badge/React-18-149ECA?logo=react&logoColor=white)](web/client)
 [![MIT](https://img.shields.io/badge/License-MIT-008b83)](LICENSE)
@@ -81,8 +81,8 @@ flowchart LR
 Python 3.9 이상이 필요합니다. 샘플 이미지와 보정값은 저장소에 포함되어 있습니다.
 
 ```bash
-git clone https://github.com/seopseopi/xrd_digitizer.git
-cd xrd_digitizer
+git clone https://github.com/seopseopi/XRD_Studio.git
+cd XRD_Studio
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
