@@ -43,7 +43,9 @@ const Toolbar = () => {
     <div className="box-col group-align-std" id="toolbar">
       <div className="toolbar-inner">
         <div className="toolbar-header-strip">
+          <span className="toolbar-kicker">CONTROL PANEL</span>
           <h4 className="toolbar-title">작업 설정</h4>
+          <p className="toolbar-description">추출과 분석 조건을 정밀하게 조정합니다.</p>
         </div>
 
         <div className="toolbar-scroll-area">

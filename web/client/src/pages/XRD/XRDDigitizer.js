@@ -1087,7 +1087,14 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
       <input ref={colorInputRef} type="color" value={colorHex} style={{ display: 'none' }} onChange={handleColorPickerChange} />
 
       <ol className="studio-steps" aria-label="추출 진행 상태">
-        {[['이미지 업로드', !!imageFile], ['축 · 색상 확인', canRun], ['데이터 추출', !!overlayData]].map(([label, done], i) => <li key={label} className={done ? 'is-complete' : ''}><span>{done ? '✓' : `0${i+1}`}</span>{label}</li>)}
+        {[['이미지 업로드', !!imageFile], ['축 · 색상 확인', canRun], ['데이터 추출', !!overlayData]].map(([label, done], i, steps) => {
+          const isCurrent = !done && steps.slice(0, i).every(([, previousDone]) => previousDone);
+          return (
+            <li key={label} className={`${done ? 'is-complete' : ''}${isCurrent ? ' is-current' : ''}`} aria-current={isCurrent ? 'step' : undefined}>
+              <span>{done ? '✓' : `0${i + 1}`}</span>{label}
+            </li>
+          );
+        })}
       </ol>
       {imageFile && <div className="studio-image-bar"><div><strong>{imageFile.name}</strong><small>{naturalSize ? `${naturalSize.w || naturalSize.width} × ${naturalSize.h || naturalSize.height} px` : '이미지 불러오는 중'}</small></div><div className="studio-image-actions"><button disabled={isDetecting || isLoading} onClick={handleAutoDetect}>{isDetecting ? '축 읽는 중…' : '축 · 숫자 자동 읽기'}</button><button className="studio-primary" disabled={!canRun || isLoading || isDetecting} onClick={handleRun}>{isLoading ? '추출 중…' : '데이터 추출 →'}</button></div></div>}
       {imageFile && <p className="studio-context" role="status">{isDetecting ? '축 교점과 눈금 숫자를 확인하고 있습니다.' : !boxValid ? '축 자동 감지를 실행하거나 설정 패널에서 영역을 지정하세요.' : !calibValid ? '영역을 찾았습니다. 설정 패널에서 X·Y축 숫자를 확인하세요.' : !colorRgb ? '추출할 곡선의 색상을 선택하세요.' : '추출 준비 완료 · 원본 이미지와 축 숫자가 일치하는지 확인하세요.'}</p>}
@@ -1104,11 +1111,9 @@ export default function XRDDigitizer({ onDigitizeComplete, mode, setMode, setToo
           onClick={() => fileInputRef.current?.click()}
         >
           <div className="xrd-settings-dropzone-icon">
-            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <path d="M3 15l5-5 4 4 3-3 6 6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className="material-symbols-rounded" aria-hidden="true">stacked_line_chart</span>
           </div>
+          <span className="studio-upload-kicker">IMAGE TO DATA</span>
           <p className="xrd-settings-dropzone-main">그래프 이미지를 여기에 놓으세요</p>
           <p className="xrd-settings-dropzone-hint">PNG · JPG · WEBP — 클릭해서 파일 선택</p>
           <button type="button" className="studio-upload-cta">이미지 선택 <span aria-hidden="true">↗</span></button>

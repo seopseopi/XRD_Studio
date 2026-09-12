@@ -1,63 +1,93 @@
-<div align="center">
+<p align="center">
+  <img src="docs/assets/xrd-studio-cover.png" width="100%" alt="MATERIAI XRD Studio — 그래프에서 결정 구조까지" />
+</p>
 
-![XRD Studio — 실제 실행 화면: 축·피크 숫자 인식과 곡선 추출](docs/screenshots/studio.png)
+<p align="center">
+  <strong>논문 속 XRD 그래프를 다시 쓸 수 있는 수치 데이터로.</strong><br />
+  축·피크 숫자 인식부터 곡선 추출과 결정학 분석까지 하나의 연구 워크스페이스에서 연결합니다.
+</p>
 
-논문 속 **XRD 그래프를 수치 데이터로.** 이미지 업로드부터 피크 분석까지, 하나의 작업 공간에서.
+<p align="center">
+  <a href="https://github.com/seopseopi/XRD_Studio/actions/workflows/tests.yml"><img src="https://github.com/seopseopi/XRD_Studio/actions/workflows/tests.yml/badge.svg?branch=main" alt="CI: Python tests and frontend build" /></a>
+  <img src="https://img.shields.io/badge/Python-3.9%2B-3B6CB5?logo=python&amp;logoColor=white" alt="Python 3.9 or later" />
+  <img src="https://img.shields.io/badge/React-18-17324D?logo=react&amp;logoColor=61DAFB" alt="React 18" />
+  <img src="https://img.shields.io/badge/Node.js-18%2B-2CA58D?logo=node.js&amp;logoColor=white" alt="Node.js 18 or later" />
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-728396" alt="MIT License" /></a>
+</p>
 
-[![Tests](https://github.com/seopseopi/XRD_Studio/actions/workflows/tests.yml/badge.svg)](https://github.com/seopseopi/XRD_Studio/actions/workflows/tests.yml)
-[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)](requirements.txt)
-[![React](https://img.shields.io/badge/React-18-149ECA?logo=react&logoColor=white)](web/client)
-[![MIT](https://img.shields.io/badge/License-MIT-008b83)](LICENSE)
+<p align="center">
+  <a href="#바로-실행"><strong>바로 실행</strong></a>
+  &nbsp; · &nbsp; <a href="#성능-검증">성능 검증</a>
+  &nbsp; · &nbsp; <a href="web/README.md">웹 사용법</a>
+  &nbsp; · &nbsp; <a href="docs/engine.md">엔진 가이드</a>
+</p>
 
-[**바로 실행**](#바로-실행) · [**성능 검증**](#성능-검증) · [**웹 사용법**](web/README.md) · [**엔진 가이드**](docs/engine.md)
+<p align="center"><sub>상단 이미지는 XRD 곡선과 결정 구조를 표현한 브랜드 일러스트입니다. 실제 앱 화면은 아래에서 확인할 수 있습니다.</sub></p>
 
-</div>
+## 그래프를 다시 쓸 수 있는 데이터로
 
-## 새 작업 화면 · 축과 피크 숫자 자동 읽기
+논문이나 보고서에 그림으로만 남은 XRD 패턴은 값을 다시 읽고 보정해야 후속 분석에 사용할 수 있습니다. XRD Studio는 이미지에서 축과 곡선을 복원하는 과정, 원본 위에서 결과를 확인하는 과정, 추출한 패턴을 분석하는 과정을 한 화면 흐름으로 묶었습니다.
 
-| 자동 읽기 | 원본에서 확인 | 저장하고 분석 |
-|:---:|:---:|:---:|
-| 축 교점 · 눈금 값 · 피크 옆 인쇄 숫자 | 위치 강조 · 값 수정 · 곡선 겹쳐 보기 | 수치 CSV · 인쇄 숫자 CSV · 분석 연결 |
+## 한눈에 보는 작업 흐름
 
-예제 이미지로 바로 체험할 수 있습니다. 작은 화면에서도 설정 패널을 사용할 수 있고, 분석 탭을 오가도 이미지와 보정 상태가 유지됩니다.
+| `DIGITIZE` | `VERIFY` | `ANALYZE` | `EXPORT` |
+|:---:|:---:|:---:|:---:|
+| 그래프 이미지에서 곡선 추출 | 축·눈금·피크 숫자를 원본에서 검토 | 피크 피팅과 결정학 분석 | CSV와 재현 가능한 JSON 저장 |
+| PNG · JPG · WEBP | 자동 감지 후 수동 미세 조정 | Scherrer · W–H · 텍스처 등 | 후속 분석 도구로 연결 |
 
-**추가 합성 검사:** 축 경계 3 px 이내 **14/48 → 48/48**, 축 숫자 범위 오차 1% 이내 **1/12 → 12/12**. 인쇄 피크 숫자 **29/30**개를 정확히 읽었습니다. 실제 사진 정확도와 동일하지 않으며, 축 위치 계산은 중앙값 12 → 71 ms로 늘었습니다. [평가 조건·한계·재현 방법](docs/axis-detection.md)
+> [!TIP]
+> 파일이 없어도 웹 앱의 **예제로 체험하기**를 누르면 전체 작업 화면과 샘플 XRD 패턴을 바로 확인할 수 있습니다.
 
 ## 이미지에서 분석까지
 
-| ① 그래프 → 수치 | ② 수치 → 분석 |
+| 이미지에서 데이터로 | 패턴에서 구조로 |
 |:---:|:---:|
-| ![Digitizer — 축·피크 숫자 자동 인식](docs/screenshots/digitizer.png) | ![Analyzer — 추출 데이터의 피크 분석 결과](docs/screenshots/analyzer.png) |
-| 축·피크 숫자 인식 → 원본 확인 → CSV 추출 | 피크 피팅 · 결정성 · Scherrer · Williamson–Hall |
+| ![XRD 이미지 디지타이저 — MATERIAI Scientific Calm UI](docs/screenshots/digitizer-materiai.png) | ![XRD 패턴 분석 — MATERIAI Scientific Calm UI](docs/screenshots/analyzer-materiai.png) |
+| 축·곡선·인쇄 숫자를 원본 위에서 확인하고 수치화 | XRD 패턴을 불러와 단계별 분석 조건을 설정 |
 
-2026-09-09 현재 앱을 직접 캡처했습니다. 내장 합성 예제의 실행 결과입니다. [업로드 화면과 전체 캡처](docs/screenshots/README.md)
+현재 앱을 1600 × 1080 환경에서 직접 캡처했습니다. 내장 샘플을 사용했으며 화면의 데이터는 데모 패턴입니다. [추가 화면과 캡처 조건](docs/screenshots/README.md)
+
+## 워크플로
 
 ```mermaid
 flowchart LR
-    A["그래프 이미지"] --> B["ROI · 색상 · 축 보정"]
-    B --> C["곡선 추출"]
+    A["그래프 이미지"] --> B["ROI · 축 · 색상 보정"]
+    B --> C["곡선 디지타이징"]
     C --> D["2θ · Intensity"]
-    D --> E["피크 · 결정학 분석"]
-    style A fill:#edf5f8,stroke:#8da8b8,color:#12243a
-    style C fill:#008b83,stroke:#008b83,color:#fff
-    style D fill:#008b83,stroke:#008b83,color:#fff
+    D --> E["피크 탐색 · 피팅"]
+    E --> F["결정학 · 고급 분석"]
+    C --> G["CSV · JSON"]
+
+    style A fill:#F5F9FC,stroke:#8DA9C4,color:#17324D
+    style B fill:#E8F1FB,stroke:#3B6CB5,color:#17324D
+    style C fill:#3B6CB5,stroke:#2D5795,color:#fff
+    style D fill:#3B6CB5,stroke:#2D5795,color:#fff
+    style E fill:#E8F1FB,stroke:#3B6CB5,color:#17324D
+    style F fill:#17324D,stroke:#17324D,color:#fff
+    style G fill:#E7F6F2,stroke:#2CA58D,color:#17324D
 ```
+
+### 이미지 자동 읽기
+
+축 교점, 눈금 값, 피크 옆 인쇄 숫자를 먼저 감지한 뒤 사용자가 원본 위치와 값을 확인할 수 있습니다. 분석 탭을 오가도 이미지와 보정 상태가 유지되며 작은 화면에서는 설정 패널이 본문 아래로 자연스럽게 이어집니다.
+
+추가 합성 검사에서 축 경계 3 px 이내 탐지는 **14/48 → 48/48**, 축 숫자 범위 오차 1% 이내 복원은 **1/12 → 12/12**로 개선됐습니다. 인쇄 피크 숫자는 **29/30**개를 정확히 읽었습니다. 이는 합성 데이터 결과이며 실제 논문 사진 정확도와 동일하지 않습니다. [평가 조건과 한계](docs/axis-detection.md)
 
 ## 성능 검증
 
 **2026-09-09 · 79개 패턴 × 3가지 렌더링 = 237개 검증 이미지**
 
-| 수치 복원 오차 ↓ | 피크 재현율 ↑ | 2만 점 수치 출력 속도 ↑ |
+| 수치 복원 오차 ↓ | 피크 재현율 ↑ | 2만 점 출력 속도 ↑ |
 |:---:|:---:|:---:|
 | **0.0821 → 0.0136** | **60.6% → 62.6%** | **약 7.5×** |
-| 평균 정규화 MAE · **83.4% 감소** | 동일 prominence·매칭 기준 | 리샘플링 연산만 측정 |
+| 평균 정규화 MAE · **83.4% 감소** | 동일 prominence·매칭 기준 | 리샘플링 연산 기준 |
 
-![스타일별 개선 전후 정규화 MAE — 패널마다 축 범위가 다름](docs/assets/performance_comparison.png)
+![스타일별 개선 전후 정규화 MAE](docs/assets/performance_comparison.png)
 
-기존 버전 `2736a85`와 동일 입력·보정값으로 비교했습니다. 원본 수치에서 생성한 이미지이며 **실제 논문 스캔의 정확도를 뜻하지 않습니다.** 개발에 쓴 21개 패턴은 위 79개에서 제외했고, 이 검증 세트로 회귀와 출시 설정을 확인했습니다.
+기존 버전 `2736a85`와 동일 입력·보정값으로 비교했습니다. 원본 수치에서 생성한 이미지이며 **실제 논문 스캔의 정확도를 뜻하지 않습니다.** 개발에 쓴 21개 패턴은 검증 세트에서 제외했습니다.
 
 <details>
-<summary><b>수치·측정 조건·남은 한계</b></summary>
+<summary><strong>수치·측정 조건·남은 한계 보기</strong></summary>
 
 | 이미지 유형 | n | MAE 이전 | MAE 개선 후 |
 |---|---:|---:|---:|
@@ -65,16 +95,16 @@ flowchart LR
 | Color + grid | 79 | 0.01978 | **0.01348** |
 | Low contrast + noise | 79 | 0.21089 | **0.01380** |
 
-- MAE는 GT의 intensity 범위로 정규화합니다. 원본 데이터는 추론에 전달하지 않습니다.
-- 피크는 GT 범위의 5% prominence, ±0.2° 내 일대일 매칭으로 비교합니다. 노이즈 피크도 포함되므로 기존 README의 피크 수치와 직접 비교할 수 없습니다.
-- 237개 모두 MAE가 감소했지만, 피크 높이·재현율까지 모두 좋아진 것은 아닙니다. 개별 지표는 [전체 결과](docs/benchmarks/2026-09-09/per_case.csv)에 공개합니다.
-- 이전 README의 ‘9만 개 검증·MAE 0.0079·Recall 99.7%’는 재현 가능한 전체 평가 기록을 확인하지 못해 현재 성능 지표에서 제외했습니다.
+- MAE는 GT intensity 범위로 정규화합니다. 원본 수치는 추론 입력으로 전달하지 않습니다.
+- 피크는 GT 범위의 5% prominence, ±0.2° 내 일대일 매칭으로 비교합니다.
+- 237개 모두 MAE가 감소했지만 피크 높이와 재현율이 모든 사례에서 개선된 것은 아닙니다.
+- 이전 README의 ‘9만 개 검증·MAE 0.0079·Recall 99.7%’는 재현 가능한 전체 기록을 확인하지 못해 현재 성능 지표에서 제외했습니다.
 
-[평가 방법·재현 명령·제약](docs/performance.md) · [측정 JSON](docs/benchmarks/2026-09-09/summary.json)
+[평가 방법과 재현 명령](docs/performance.md) · [전체 결과 CSV](docs/benchmarks/2026-09-09/per_case.csv) · [측정 JSON](docs/benchmarks/2026-09-09/summary.json)
 
 </details>
 
-![저대비 실패 사례의 입력 이미지와 수치 복원 전후 — 기준선 오차가 가장 큰 사례](docs/assets/extraction_comparison.png)
+![저대비 실패 사례의 수치 복원 개선 전후](docs/assets/extraction_comparison.png)
 
 ## 바로 실행
 
@@ -83,6 +113,7 @@ Python 3.9 이상이 필요합니다. 샘플 이미지와 보정값은 저장소
 ```bash
 git clone https://github.com/seopseopi/XRD_Studio.git
 cd XRD_Studio
+
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -93,37 +124,71 @@ python -m runner.run_simple \
   --output_json_path result.json
 ```
 
-결과: `two_theta_values`, `intensities`, `peaks_numeric_curve`, 보정 정보와 경고를 포함한 JSON.
+`result.json`에는 `two_theta_values`, `intensities`, `peaks_numeric_curve`, 보정 정보와 경고가 저장됩니다.
 
 <details>
-<summary><b>웹 앱 실행 · Node.js 18 이상</b></summary>
+<summary><strong>웹 앱 실행 · Node.js 18 이상</strong></summary>
 
 ```bash
 cd web
 npm run install:all
 
-# 저장소 루트의 Python 환경을 지정
+# 저장소 루트의 Python 환경 지정
 export XRD_DIGITIZER_PYTHON="$(cd .. && pwd)/.venv/bin/python"
 npm run start:server
 
-# 다른 터미널에서
+# 새 터미널에서
 cd web
 npm run start:client
 ```
 
-브라우저에서 [localhost:3000](http://localhost:3000)을 엽니다. 자동 ROI 감지에는 OpenCV, OCR에는 Tesseract가 추가로 필요합니다. 자세한 설정은 [웹 가이드](web/README.md)를 참고하세요.
+브라우저에서 [localhost:3000](http://localhost:3000)을 엽니다. 자동 ROI 감지에는 OpenCV, OCR에는 Tesseract가 추가로 필요합니다. 자세한 설정은 [웹 앱 가이드](web/README.md)를 참고하세요.
 
 </details>
 
-## 더 알아보기
+## 구성
+
+```text
+XRD_Studio/
+├── preprocess/   # ROI · 마스크 · 대비 · 원근 보정
+├── trace/        # 후보 생성 · DP 추적 · 경로 복구
+├── calibrate/    # 픽셀 좌표 ↔ 2θ · intensity 변환
+├── peaks/        # 평활화와 피크 검출
+├── runner/       # CLI 파이프라인 진입점
+├── web/          # React Studio + Express API
+├── eval/         # 정량 평가와 비교 스크립트
+└── tests/        # Python · 프론트엔드 회귀 검증
+```
+
+```mermaid
+flowchart LR
+    UI["React Studio"] --> API["Express API"]
+    CLI["Python CLI"] --> ENGINE["Digitizer Engine"]
+    API --> ENGINE
+    ENGINE --> DATA["CSV · JSON"]
+    DATA --> ANALYSIS["XRD Analysis"]
+
+    style UI fill:#E8F1FB,stroke:#3B6CB5,color:#17324D
+    style API fill:#F5F9FC,stroke:#8DA9C4,color:#17324D
+    style CLI fill:#F5F9FC,stroke:#8DA9C4,color:#17324D
+    style ENGINE fill:#3B6CB5,stroke:#2D5795,color:#fff
+    style DATA fill:#E7F6F2,stroke:#2CA58D,color:#17324D
+    style ANALYSIS fill:#17324D,stroke:#17324D,color:#fff
+```
+
+## 문서
 
 | 가이드 | 내용 |
 |---|---|
-| [엔진과 추출 옵션](docs/engine.md) | 기본 픽셀 추출 · DP 엔진 · 중심선 옵션 · 코드 구조 |
+| [엔진과 추출 옵션](docs/engine.md) | 픽셀 추출 · DP 엔진 · 중심선 옵션 · 코드 구조 |
+| [축·숫자 자동 감지](docs/axis-detection.md) | 평가 조건 · OCR · 자동 보정 · 한계 |
 | [성능 개선 기록](docs/performance.md) | 데이터 보정 오류 · 알고리즘 변경 · 재현 가능한 비교 |
-| [웹 앱](web/README.md) | 설치 · 환경변수 · API · 분석 도구 |
+| [웹 앱](web/README.md) | 설치 · 환경 변수 · API · 분석 도구 |
 | [테스트](tests) | `python -m pytest -q` · Python 3.9 / 3.12 CI |
 
 ---
 
-**이민섭 · [seopseopi](https://github.com/seopseopi)** — Materials Informatics · [MIT License](LICENSE)
+<p align="center">
+  <strong>그래프에서 결정 구조까지.</strong><br />
+  <sub>MATERIAI XRD Studio · <a href="docs/screenshots/README.md">실제 화면</a> · <a href="docs/assets/README.md">배너 제작 기록</a> · <a href="LICENSE">MIT License</a></sub>
+</p>

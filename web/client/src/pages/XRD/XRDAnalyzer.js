@@ -1060,8 +1060,30 @@ const XRDAnalyzer = () => {
 
   return (
     <div className="data-management studio-workspace">
-      <div className="studio-workspace-heading"><div><p className="studio-eyebrow">X-RAY DIFFRACTION WORKSPACE</p><h1>{mode === 'digitize' ? '그래프를 정확한 데이터로' : '패턴을 읽고, 구조를 분석하세요'}</h1></div>
-        <nav className="studio-tabs" aria-label="작업 모드">{[{ key: 'digitize', label: '이미지 추출' }, { key: 'analyze', label: '데이터 분석' }].map(tab => <button type="button" key={tab.key} aria-pressed={mode === tab.key} onClick={() => setMode(tab.key)}>{tab.label}</button>)}</nav>
+      <div className="studio-workspace-heading">
+        <div className="studio-heading-copy">
+          <div className="studio-heading-meta">
+            <p className="studio-eyebrow">MATERIAI SCIENCE TOOL</p>
+            <span className="studio-tool-chip">XRD</span>
+          </div>
+          <h1>{mode === 'digitize' ? '그래프 이미지를 정밀 데이터로' : '회절 패턴에서 재료의 구조까지'}</h1>
+          <p className="studio-heading-description">
+            {mode === 'digitize'
+              ? '이미지의 축과 곡선을 읽어 분석 가능한 수치 데이터로 변환합니다.'
+              : '피크 탐색부터 결정 구조와 고급 재료 분석까지 한 흐름으로 진행합니다.'}
+          </p>
+        </div>
+        <nav className="studio-tabs" aria-label="작업 모드">
+          {[
+            { key: 'digitize', label: '이미지 추출', icon: 'image_search' },
+            { key: 'analyze', label: '데이터 분석', icon: 'query_stats' },
+          ].map(tab => (
+            <button type="button" key={tab.key} aria-pressed={mode === tab.key} onClick={() => setMode(tab.key)}>
+              <span className="material-symbols-rounded" aria-hidden="true">{tab.icon}</span>
+              {tab.label}
+            </button>
+          ))}
+        </nav>
       </div>
       <div className="studio-digitize-pane" style={{ display: mode === 'digitize' ? 'flex' : 'none', flex: 1, minHeight: 0, flexDirection: 'column' }}>
         <XRDDigitizer
@@ -2243,4 +2265,3 @@ const XRDAnalyzer = () => {
 };
 
 export default XRDAnalyzer;
-

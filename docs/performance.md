@@ -1,6 +1,6 @@
 # 성능 개선과 재현 기록
 
-2026-09-09 · 기준 버전 [`2736a85`](https://github.com/seopseopi/xrd_digitizer/commit/2736a85) 대비 기본 `runner.run_simple` 엔진을 비교했습니다. 웹 서버에 포함된 Python 사본에도 같은 수정을 적용했습니다.
+2026-09-09 · 기준 버전 [`2736a85`](https://github.com/seopseopi/XRD_Studio/commit/2736a85) 대비 기본 `runner.run_simple` 엔진을 비교했습니다. 웹 서버에 포함된 Python 사본에도 같은 수정을 적용했습니다.
 
 ## 결과
 
